@@ -1,6 +1,6 @@
 # STQA Library Manual Testing — Starter Template
 
-Bài tập thực hành **Kiểm thử thủ công (Manual Testing)** cho môn **Đảm bảo Chất lượng và Kiểm thử Phần mềm (STQA)**.
+Bài tập thực hành **Kiểm thử thủ công (Manual Testing)** cho môn **Kiểm thử và Đảm bảo chất lượng phần mềm (STQA)**.
 (*A hands-on **Manual Testing** assignment for the **Software Testing & Quality Assurance (STQA)** course.*)
 
 Hệ thống cần kiểm thử: **Quản lý mượn sách Thư viện ABC** — [https://stqa.rbc.vn](https://stqa.rbc.vn)

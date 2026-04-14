@@ -1,6 +1,6 @@
 # Đề bài A1 — Kiểm thử thủ công / Assignment A1 — Manual Black-box Testing
 
-**Môn học**: Đảm bảo chất lượng & Kiểm thử phần mềm (STQA)
+**Môn học**: Kiểm thử và Đảm bảo chất lượng phần mềm (STQA)
 **Hệ thống**: Quản lý mượn sách Thư viện ABC — https://stqa.rbc.vn
 **Phương pháp**: Kiểm thử hộp đen (Black-box Testing)
 **Repo starter**: https://github.com/chuyentt/stqa-library-manual-starter
