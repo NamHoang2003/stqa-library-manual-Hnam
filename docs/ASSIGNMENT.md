@@ -180,3 +180,11 @@ git push origin main
 | **README.md** | Đã điền thông tin nhóm |
 | **Tùy chọn** | Ảnh chụp minh chứng (bonus B3) |
 | **Hạn nộp** | Theo thông báo của giảng viên |
+
+---
+
+## 9. Khai báo sử dụng AI (Tùy chọn)
+
+> Nếu nhóm có sử dụng công cụ AI (ChatGPT, Copilot, Gemini...) để hỗ trợ viết test case hoặc bug report, hãy ghi rõ trong phần "Khai báo sử dụng AI" ở `submissions/summary.md`. Khai báo trung thực **không ảnh hưởng điểm** — đây là kỹ năng minh bạch trong nghề.
+>
+> **Lưu ý quan trọng:** Xem [docs/ai-guidelines.md](ai-guidelines.md) để biết cách dùng AI hiệu quả và tránh những cái bẫy phổ biến.
