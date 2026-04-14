@@ -90,7 +90,8 @@ Hệ thống tại https://stqa.rbc.vn sử dụng kiến trúc **Test Double**:
 
 Lâu nay ta chia kiểm thử thành **Black-box** (chỉ nhìn SRS) và **White-box** (nhìn code). Nhưng tác giả cho rằng:
 
-> *"A more useful question is: what is the level of abstraction of the model from which tests are designed?"*
+> *"Thus asking whether a coverage criterion is black-box or white-box is the wrong question. One more properly should ask from what level of abstraction is the structure drawn."*
+> — Ammann & Offutt, Ch.2, p.58
 
 Trong bài tập này:
 - Bạn thiết kế TC từ **SRS** → đó là một **model** ở mức trừu tượng cao
@@ -109,3 +110,7 @@ Trong bài tập này:
 | Thiết kế TC từ SRS | Model-Driven Test Design (MDTD) | Ch.2 §2.5 |
 | Hệ thống chạy không cần server | Test Doubles (Stub/Mock) | Ch.12 |
 | Bug report khi TC Fail | Fault Detection — RIPR Model | Ch.2 |
+| `group-exercises.md` BT4: FSM vòng đời sách | FSM, State/Transition Coverage | Ch.7 §7.5.2, §7.2.1 |
+| `group-exercises.md` BT5: Oracle mạnh/yếu | Null Oracle, Oracle Precision | Ch.14 §14.1 |
+| `group-exercises.md` BT6: Regression Selection | Regression Testing, Test Selection | Ch.13 |
+| `group-exercises.md` BT7: Kill the Mutant | Mutation Testing, ROR, BVA↔Mutation | Ch.9 §9.1.2, §9.2.2, Ch.6 |
