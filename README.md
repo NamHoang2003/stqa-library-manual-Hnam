@@ -153,6 +153,8 @@ git push origin main
 | Xem tài khoản test | [docs/test-accounts.md](docs/test-accounts.md) |
 | Tra thuật ngữ | [docs/glossary.md](docs/glossary.md) |
 | Xem phạm vi test | [docs/testing-scope.md](docs/testing-scope.md) |
+| **Liên kết textbook ↔ bài tập** | [docs/textbook-concepts.md](docs/textbook-concepts.md) |
+| **Bài tập nhóm thảo luận** | [docs/group-exercises.md](docs/group-exercises.md) |
 | Xem ví dụ TC mẫu | [examples/sample-test-case.md](examples/sample-test-case.md) |
 | Xem ví dụ bug report | [examples/sample-bug-report.md](examples/sample-bug-report.md) |
 | Làm bài | [submissions/](submissions/) |
