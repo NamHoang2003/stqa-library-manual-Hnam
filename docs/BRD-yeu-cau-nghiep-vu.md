@@ -1,11 +1,11 @@
 # BRD — Tài liệu Yêu cầu Nghiệp vụ
 ## (Business Requirements Document)
 
-> **� Hệ thống hư cấu / Fictional System**: Thư viện ABC là hệ thống **hư cấu** được thiết kế cho mục đích học tập. Tên nhân vật, tổ chức và dữ liệu đều là giả lập. / *ABC Library is a **fictional** system designed for educational purposes. All names, organizations, and data are simulated.*
+> **📚 Hệ thống hư cấu / Fictional System**: Quán Cà Phê ABC là hệ thống **hư cấu** được thiết kế cho mục đích học tập. Tên nhân vật, tổ chức và dữ liệu đều là giả lập.  
+> *ABC Coffee is a **fictional** system designed for educational purposes. All names, organizations, and data are simulated.*
 
-> **�📌 Lưu ý cho sinh viên**: Đây là tài liệu **tham khảo** (reference). Bạn **không** viết test case dựa trên BRD.
->
-> BRD giúp bạn hiểu **tại sao** hệ thống được xây dựng và yêu cầu **đến từ ai**. Tài liệu chính để kiểm thử là **SRS** (SRS-library-system.md).
+> **📌 Lưu ý cho sinh viên**: Đây là tài liệu **tham khảo** (reference). Bạn **không** viết test case dựa trên BRD.  
+> BRD giúp bạn hiểu **tại sao** hệ thống được xây dựng và yêu cầu **đến từ ai**. Tài liệu chính để kiểm thử là **SRS**.
 
 ```mermaid
 flowchart TD
@@ -14,29 +14,30 @@ flowchart TD
     C["Test Cases - bài tập của bạn"] -->|Kiểm tra: hệ thống có đúng không?| D["Kết quả"]
 ```
 
-> **⚠️ Lưu ý quan trọng**: BRD là phiên bản yêu cầu **ban đầu** từ khách hàng. Trong quá trình phân tích, BA đã điều chỉnh một số chi tiết khi viết SRS (ví dụ: BRD ghi "đăng nhập bằng mã thành viên" → SRS đổi thành "đăng nhập bằng email + mật khẩu"). Đây là điều **bình thường** trong dự án thực tế — SRS luôn là phiên bản **chính xác hơn** để kiểm thử.
+> **⚠️ Lưu ý quan trọng**: BRD là phiên bản yêu cầu **ban đầu** từ khách hàng. Trong quá trình phân tích, BA có thể điều chỉnh một số chi tiết khi viết SRS. Đây là điều bình thường trong dự án thực tế — SRS luôn là phiên bản **chính xác hơn** để kiểm thử.
 
 | Thông tin tài liệu | |
 |---|---|
-| **Dự án** | Hệ thống Quản lý Mượn sách — Thư viện ABC |
+| **Dự án** | Hệ thống Quản lý Quán Cà Phê ABC |
 | **Phiên bản** | 1.0 |
-| **Ngày tạo** | 01/06/2024 |
-| **Người yêu cầu** | Ông Trần Văn Thư — Giám đốc Thư viện ABC (Customer / Khách hàng) |
-| **Người tiếp nhận** | Bà Nguyễn Thị Quản — Trưởng dự án / Project Manager (PM), Công ty phần mềm XYZ |
+| **Ngày tạo** | 16/04/2026 |
+| **Người yêu cầu** | Bà Lê Thị Cà Phê — Chủ quán Cà Phê ABC |
+| **Người tiếp nhận** | Ông Nguyễn Văn Quản — Trưởng dự án / Project Manager, Công ty phần mềm XYZ |
 
 ---
 
 ## 1. Bối cảnh
 
-Thư viện ABC là một thư viện nhỏ phục vụ cộng đồng sinh viên, hiện đang quản lý việc mượn/trả sách bằng **sổ ghi chép thủ công**. Quy trình hiện tại gặp nhiều vấn đề:
+Quán Cà Phê ABC là một quán cà phê nhỏ phục vụ sinh viên và nhân viên văn phòng gần trường đại học. Hiện tại quán đang quản lý mọi hoạt động bằng **sổ tay và tính toán thủ công**. Quy trình hiện tại gặp nhiều vấn đề nghiêm trọng:
 
-- Nhân viên quản lý **mất nhiều thời gian** tìm kiếm sách trong sổ.
-- Thường xuyên **nhầm lẫn** trạng thái sách (đã trả hay chưa trả).
-- Không có cơ chế **cảnh báo quá hạn** — nhiều sách bị mượn quá lâu mà không biết.
-- Thành viên thư viện **không tra cứu** được lịch sử mượn của mình.
-- Khó kiểm soát số lượng sách mỗi người đang mượn.
+- Nhân viên mất nhiều thời gian tìm kiếm đồ uống và kiểm tra nguyên liệu tồn kho.
+- Thường xuyên nhầm lẫn tình trạng đồ uống (còn hay hết tạm thời do hết nguyên liệu).
+- Không kiểm soát tốt tồn kho nguyên liệu, dẫn đến tình trạng hết nguyên liệu giữa ca hoặc lãng phí.
+- Khó theo dõi doanh thu theo ca/ngày và xác định món bán chạy.
+- Không có cơ chế áp dụng khuyến mãi nhanh chóng và chính xác.
+- Khách hàng phải chờ lâu khi nhân viên tính tiền thủ công.
 
-Giám đốc thư viện mong muốn có một **ứng dụng web đơn giản** để tin học hóa quy trình này.
+Chủ quán mong muốn có một **ứng dụng web đơn giản** để tin học hóa quy trình bán hàng, quản lý đơn hàng và tồn kho.
 
 ---
 
@@ -44,13 +45,13 @@ Giám đốc thư viện mong muốn có một **ứng dụng web đơn giản**
 
 | Mã | Mục tiêu | Độ ưu tiên |
 |----|---------|-----------|
-| BO-01 | Số hóa quy trình mượn/trả sách, thay thế sổ ghi chép | Cao |
-| BO-02 | Tự động cảnh báo khi sách quá hạn trả | Cao |
-| BO-03 | Giới hạn số sách mỗi thành viên được mượn cùng lúc | Cao |
-| BO-04 | Cho phép tìm kiếm sách nhanh chóng theo tên, tác giả hoặc thể loại | Trung bình |
-| BO-05 | Quản lý danh sách thành viên và trạng thái hoạt động | Trung bình |
-| BO-06 | Mỗi thành viên tự tra cứu được lịch sử mượn/trả của mình | Trung bình |
-| BO-07 | Giao diện đơn giản, dễ sử dụng cho nhân viên thư viện | Cao |
+| BO-01 | Số hóa quy trình tạo đơn hàng và thanh toán, thay thế sổ tay | Cao |
+| BO-02 | Quản lý tồn kho nguyên liệu thời gian thực, cảnh báo hết hàng | Cao |
+| BO-03 | Tự động tính toán doanh thu và thống kê món bán chạy | Cao |
+| BO-04 | Hỗ trợ tìm kiếm & lọc menu đồ uống nhanh chóng | Cao |
+| BO-05 | Quản lý nhân viên và phân quyền rõ ràng | Trung bình |
+| BO-06 | Áp dụng khuyến mãi/voucher linh hoạt | Trung bình |
+| BO-07 | Giao diện đơn giản, dễ sử dụng cho nhân viên phục vụ | Cao |
 
 ---
 
@@ -58,23 +59,23 @@ Giám đốc thư viện mong muốn có một **ứng dụng web đơn giản**
 
 ### 3.1. Trong phạm vi (In-scope)
 
-- Đăng nhập bằng mã thành viên (không cần mật khẩu — hệ thống nội bộ nhỏ).
-- Quản lý danh mục sách (xem, tìm kiếm, lọc).
-- Quy trình mượn sách với kiểm tra ràng buộc.
-- Quy trình trả sách với cảnh báo quá hạn.
-- Quản lý thành viên (xem danh sách, đăng ký mới).
-- Kiểm tra và đánh dấu sách quá hạn.
-- Tra cứu phiếu mượn cá nhân.
-- Hỗ trợ song ngữ Việt–Anh.
+- Đăng nhập phân quyền theo vai trò (Quản lý & Nhân viên)
+- Quản lý menu đồ uống (xem, tìm kiếm, lọc)
+- Tạo đơn hàng và thêm nhiều món vào đơn
+- Thanh toán đơn hàng với nhiều hình thức
+- Quản lý tồn kho nguyên liệu (cập nhật tự động khi bán hàng)
+- Quản lý nhân viên (thêm, sửa, thay đổi trạng thái)
+- Báo cáo doanh thu cơ bản theo ngày/tuần
+- Hỗ trợ song ngữ Việt–Anh
 
-### 3.2 Ngoài phạm vi (Out-of-scope)
+### 3.2. Ngoài phạm vi (Out-of-scope)
 
-- Thanh toán phí phạt (chưa cần trong giai đoạn đầu).
-- Đặt trước sách (reservation).
-- Thông báo qua email/SMS.
-- Quản lý kho sách vật lý (kệ, vị trí).
-- Ứng dụng di động.
-- Báo cáo thống kê nâng cao.
+- Thanh toán online qua cổng thanh toán bên thứ ba
+- Chương trình khách hàng thân thiết / tích điểm
+- Quản lý bàn ghế và đặt chỗ trước
+- In hóa đơn vật lý (chỉ hiển thị trên màn hình)
+- Báo cáo thống kê nâng cao (dự báo doanh thu, phân tích xu hướng)
+- Ứng dụng di động
 
 ---
 
@@ -82,19 +83,18 @@ Giám đốc thư viện mong muốn có một **ứng dụng web đơn giản**
 
 ```mermaid
 flowchart TD
-    A["Thành viên đến thư viện"] --> B["Đưa thẻ thành viên\ncho nhân viên"]
-    B --> C{"Nhân viên tra sổ\nKiểm tra tư cách"}
-    C -->|Không hợp lệ| D["Từ chối"]
-    C -->|Hợp lệ| E["Thành viên chọn sách trên kệ"]
-    E --> F["Nhân viên ghi vào sổ mượn\nTên sách, mã sách\nTên thành viên\nNgày mượn, hạn trả"]
-    F --> G["Khi trả: Tìm trong sổ\nGhi ngày trả\nXóa gạch dòng"]
+    A["Khách hàng gọi món"] --> B["Nhân viên ghi tay vào sổ"]
+    B --> C["Nhân viên kiểm tra tồn kho thủ công"]
+    C --> D["Tính tiền bằng máy tính bỏ túi hoặc giấy"]
+    D --> E["Ghi nhận thanh toán vào sổ doanh thu"]
+    E --> F["Cập nhật tồn kho thủ công sau ca"]
 ```
 
 **Vấn đề chính:**
-- Tra sổ chậm, dễ nhầm.
-- Không có cơ chế nhắc quá hạn.
-- Không biết ai đang mượn bao nhiêu sách.
-- Thành viên hết hạn hoặc bị tạm ngưng vẫn có thể mượn nếu nhân viên quên kiểm tra.
+- Dễ sai sót khi tính tiền và tồn kho
+- Không biết chính xác món nào bán chạy
+- Mất thời gian kiểm tra nguyên liệu
+- Khó kiểm soát nhân viên và doanh thu theo ca
 
 ---
 
@@ -102,26 +102,14 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A["Truy cập hệ thống web"] --> B["Đăng nhập bằng mã thành viên"]
-    B --> C{"Mã thành viên\ntồn tại?"}
-    C -->|Không| D["Thông báo lỗi"]
-    C -->|Có| E["Trang chính"]
-
-    E --> F["Xem / Tìm kiếm / Lọc sách"]
-    E --> P["Quản lý thành viên\nXem danh sách / Thêm mới"]
-    E --> Q["Phiếu mượn\nTra cứu / Trả sách"]
-    E --> R["Kiểm tra sách quá hạn\nĐánh dấu phiếu quá hạn"]
-
-    F --> G["Chọn sách và nhấn Mượn"]
-    G --> H{"Kiểm tra:\nSách có sẵn?\nTV Hoạt động?\nĐang mượn < 3?"}
-    H -->|Không thỏa| I["Thông báo lỗi"]
-    H -->|Thỏa| J["Tạo phiếu mượn\nHạn trả = +14 ngày"]
-
-    Q --> K["Chọn phiếu mượn và nhấn Trả"]
-    K --> L{"Quá hạn?"}
-    L -->|Có| M["Cảnh báo quá hạn"]
-    M --> N["Trả thành công"]
-    L -->|Không| N
+    A["Nhân viên đăng nhập"] --> B["Xem menu & Tìm kiếm đồ uống"]
+    B --> C["Tạo đơn hàng + Thêm món"]
+    C --> D{"Kiểm tra tồn kho?"}
+    D -->|Không đủ| E["Thông báo lỗi & Gợi ý thay thế"]
+    D -->|Đủ| F["Tính tạm tính + Áp dụng khuyến mãi"]
+    F --> G["Thanh toán & Hoàn tất đơn"]
+    G --> H["Tự động trừ tồn kho nguyên liệu"]
+    H --> I["Cập nhật doanh thu thời gian thực"]
 ```
 
 ---
@@ -130,41 +118,41 @@ flowchart TD
 
 | Mã | Quy tắc | Chi tiết |
 |----|---------|---------|
-| BR-01 | Giới hạn mượn sách | Mỗi thành viên được mượn tối đa **3 sách** cùng lúc |
-| BR-02 | Thời hạn mượn | **14 ngày** kể từ ngày mượn |
-| BR-03 | Điều kiện mượn — trạng thái thành viên | Chỉ thành viên **"Hoạt động"** mới được mượn. "Tạm ngưng" và "Hết hạn" bị từ chối |
-| BR-04 | Điều kiện mượn — trạng thái sách | Chỉ sách **"Có sẵn"** mới được mượn. "Đang mượn" và "Thất lạc" không được phép |
-| BR-05 | Quá hạn | Sách đến ngày hạn trả (bao gồm chính ngày đó) được coi là **quá hạn** |
-| BR-06 | Cảnh báo trả quá hạn | Khi trả sách quá hạn, hệ thống phải hiển thị **cảnh báo rõ ràng** |
-| BR-07 | Bảo mật phiếu mượn | Mỗi thành viên **chỉ xem được** phiếu mượn của chính mình |
-| BR-08 | Xác nhận email | Email thành viên phải có dạng `user@domain.ext` (có dấu chấm trong domain) |
-| BR-09 | Xác nhận số điện thoại | Bắt đầu bằng `0`, đúng **10 chữ số** |
-| BR-10 | Tìm kiếm không phân biệt hoa/thường | Tìm kiếm sách theo tên, tác giả, thể loại phải **case-insensitive** |
+| BR-01 | Giới hạn đơn hàng | Tối đa **10 món** trong một đơn hàng |
+| BR-02 | Kiểm tra tồn kho | Chỉ cho phép thêm món khi nguyên liệu chính đủ |
+| BR-03 | Cảnh báo tồn kho | Cảnh báo khi nguyên liệu còn dưới **10 đơn vị** |
+| BR-04 | Khuyến mãi | Hỗ trợ giảm giá % hoặc giảm cố định (áp dụng cho toàn đơn) |
+| BR-05 | Hình thức thanh toán | Tiền mặt, Chuyển khoản, Ví điện tử |
+| BR-06 | Báo cáo doanh thu | Tính theo ngày, tuần, tháng và top món bán chạy |
+| BR-07 | Phân quyền | Nhân viên chỉ tạo và thanh toán đơn. Quản lý được quản lý kho, nhân viên & xem báo cáo |
+| BR-08 | Tìm kiếm | Không phân biệt chữ hoa/thường (case-insensitive) |
+| BR-09 | Xác thực email | Email phải hợp lệ (có `@` và dấu `.` trong phần domain) |
 
 ---
 
 ## 7. Các bên liên quan (Stakeholders)
 
 | Vai trò | Người đại diện | Mối quan tâm chính |
-|---------|---------------|-------------------|
-| Giám đốc thư viện (Customer) | Ông Trần Văn Thư | Hệ thống chạy ổn định, thay thế sổ ghi chép |
-| Nhân viên thư viện (End User) | 2 nhân viên | Giao diện dễ dùng, thao tác nhanh |
-| Thành viên thư viện (End User) | ~50 thành viên | Tra cứu sách dễ, xem lịch sử mượn |
+|---------|----------------|-------------------|
+| Chủ quán (Customer) | Bà Lê Thị Cà Phê | Hệ thống giúp tăng tốc độ phục vụ, giảm sai sót, kiểm soát tốt tồn kho và doanh thu |
+| Quản lý quán | Ông Trần Văn Quản | Quản lý nhân viên, tồn kho và báo cáo dễ dàng |
+| Nhân viên phục vụ (End User) | 4–6 nhân viên | Giao diện dễ dùng, tạo đơn và thanh toán nhanh |
+| Khách hàng | Sinh viên & nhân viên văn phòng | Phục vụ nhanh, đồ uống đúng, ít chờ đợi |
 
 ---
 
 ## 8. Ràng buộc và giả định
 
 ### Ràng buộc:
-- Ngân sách hạn chế → ưu tiên ứng dụng web, không làm mobile.
-- Không có server riêng → chấp nhận dữ liệu in-memory (reset khi tải lại trang) trong giai đoạn đầu.
+- Ngân sách hạn chế → ưu tiên ứng dụng web, dữ liệu lưu trong bộ nhớ trình duyệt (client-side only).
+- Không có server backend → dữ liệu sẽ reset khi refresh trang.
 - Thời gian phát triển: **4 tuần**.
 
 ### Giả định:
-- Thư viện có khoảng 50–100 đầu sách, không cần phân trang phức tạp.
-- Số thành viên hoạt động: 30–50 người.
-- Hệ thống được truy cập trên máy tính để bàn, trình duyệt Chrome.
-- Không cần xác thực phức tạp (mã thành viên là đủ cho nội bộ).
+- Quán có khoảng 30–50 món đồ uống.
+- Có một số nguyên liệu chính cần quản lý (cà phê bột, sữa tươi, siro, ly giấy, topping…).
+- Hệ thống được sử dụng chủ yếu trên máy tính để bàn và máy tính bảng (trình duyệt Chrome).
+- Mỗi món đồ uống có **1 công thức nguyên liệu** cố định.
 
 ---
 
@@ -172,16 +160,14 @@ flowchart TD
 
 | Mã | Tiêu chí | Phương pháp kiểm tra |
 |----|---------|---------------------|
-| AC-01 | Đăng nhập thành công bằng mã thành viên hợp lệ | Nhập mã → Vào được hệ thống |
-| AC-02 | Từ chối mã thành viên không tồn tại | Nhập mã sai → Thông báo lỗi |
-| AC-03 | Tìm kiếm sách theo tên/tác giả | Gõ từ khóa → Kết quả đúng |
-| AC-04 | Mượn sách thành công với đầy đủ điều kiện | Mượn → Phiếu mượn được tạo |
-| AC-05 | Từ chối mượn khi vượt giới hạn 3 sách | Mượn sách thứ 4 → Bị từ chối |
-| AC-06 | Trả sách thành công | Trả → Sách chuyển về "Có sẵn" |
-| AC-07 | Cảnh báo khi trả sách quá hạn | Trả quá hạn → Có thông báo cảnh báo |
-| AC-08 | Thêm thành viên mới hợp lệ | Nhập thông tin đúng → Thành viên xuất hiện trong danh sách |
-| AC-09 | Mỗi thành viên chỉ xem phiếu mượn của mình | Đăng nhập A → Không xem được phiếu của B |
-| AC-10 | Giao diện hỗ trợ Tiếng Việt và Tiếng Anh | Chuyển đổi ngôn ngữ → Giao diện thay đổi |
+| AC-01 | Đăng nhập thành công theo vai trò | Nhân viên và Quản lý truy cập được vào chức năng phù hợp |
+| AC-02 | Tạo đơn hàng và thêm món thành công | Đơn hàng hiển thị đúng món và tạm tính chính xác |
+| AC-03 | Từ chối thêm món khi hết nguyên liệu | Hiển thị thông báo lỗi rõ ràng |
+| AC-04 | Thanh toán hoàn tất và tự động trừ tồn kho | Tồn kho được cập nhật chính xác sau khi thanh toán |
+| AC-05 | Áp dụng khuyến mãi đúng | Tổng tiền sau khi giảm giá chính xác |
+| AC-06 | Xem báo cáo doanh thu | Hiển thị đúng doanh thu theo ngày/tuần và top món bán chạy |
+| AC-07 | Quản lý thêm nhân viên mới | Nhân viên mới xuất hiện trong danh sách và có thể đăng nhập |
+| AC-08 | Giao diện hỗ trợ Tiếng Việt và Tiếng Anh | Chuyển ngôn ngữ hoạt động đúng |
 
 ---
 
@@ -200,5 +186,13 @@ flowchart TD
 
 | | Họ tên | Chức vụ | Ngày |
 |---|--------|--------|------|
-| **Người yêu cầu** | Trần Văn Thư | Giám đốc Thư viện ABC (Customer) | 01/06/2024 |
-| **Người tiếp nhận** | Nguyễn Thị Quản | Trưởng dự án / PM, Cty XYZ | 03/06/2024 |
+| **Người yêu cầu** | Lê Thị Cà Phê | Chủ quán Cà Phê ABC | 16/04/2026 |
+| **Người tiếp nhận** | Nguyễn Văn Quản | Trưởng dự án / PM, Công ty XYZ | 16/04/2026 |
+
+```
+
+**Hướng dẫn sử dụng:**  
+Copy toàn bộ nội dung trên → Paste vào một file mới → Lưu với tên:  
+`BRD-yeu-cau-nghiep-vu-coffee.md`
+
+Bạn muốn mình tiếp tục viết **SRS đầy đủ** cho Hệ thống Quản lý Quán Cà Phê ABC luôn không? Mình có thể viết ngay với cấu trúc tương tự SRS Thư viện.
