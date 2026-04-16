@@ -6,8 +6,8 @@
 
 | Thông tin | |
 |---|---|
-| **Nhóm** | `<!-- Tên nhóm -->` |
-| **Ngày tạo** | `<!-- DD/MM/YYYY -->` |
+| **Nhóm** | `Hnam` |
+| **Ngày tạo** | `16/4/2026` |
 | **Hệ thống** | https://stqa.rbc.vn |
 | **Tham chiếu** | SRS v1.0 |
 
@@ -31,6 +31,18 @@
 | Ô nhập có rỗng? | Không rỗng | (giá trị bất kỳ) | Xử lý bình thường |
 | | Rỗng | `""` | Thông báo "Vui lòng nhập..." |
 
+### IDM — xem danh sách sách (REQ-02)
+
+| Đặc tính (Characteristic) | Phân vùng (Block) | Giá trị đại diện (Value) | Kết quả mong đợi |
+|---|---|---|---|
+|Vai trò người dùng là gì ? | Thủ thư | librarian | Xem được danh sách |
+| | Thành viên | member | Xem được danh sách |
+| Danh sách dữ liệu trống ? | có dữ liệu | 20 cuốn sách | Hiển thị đầy đủ thông tin |
+| | Không có dữ liệu | 0 cuốn sách | Hiển thị không có dữ liệu |
+| Trạng thái sách có sẵn hay không? | có sẵn | available | Hiển thị có sẵn |
+| | đã mượn | borrowed | Hiển thị đã mượn |
+
+
 ### IDM — Tìm kiếm sách (REQ-03)
 
 | Đặc tính (Characteristic) | Phân vùng (Block) | Giá trị đại diện (Value) | Kết quả mong đợi |
@@ -53,6 +65,24 @@
 | | Hết hạn | MEM005 | Từ chối, thông báo lỗi |
 | Số sách đang mượn? | < 3 (BVA: 0, 1, 2) | MEM006 (0 sách) | Cho phép mượn |
 | | = 3 (BVA: giới hạn) | MEM đã mượn 3 sách | Từ chối, thông báo vượt giới hạn |
+
+### IDM — Trả sách (REQ-05)
+| Đặc tính (Characteristic) | Phân vùng (Block) | Giá trị đại diện (Value) | Kết quả mong đợi |
+|---|---|---|---|
+| Quyền sở hữu | Đúng người mượn | user A | Trả thành công |
+| | Sai người | user B | Từ chối |
+| Trạng thái sách | Đang mượn | Borrowed | Cho phép trả |
+| | Không mượn | Available | Báo lỗi |
+| Tình trạng quá hạn | Không | trước dueDate | Trả bình thường |
+| | Có | sau dueDate | Cảnh báo quá hạn |
+
+### IDM — Xử lý sách quá hạn (REQ-06)
+| Đặc tính (Characteristic) | Phân vùng (Block) | Giá trị đại diện (Value) | Kết quả mong đợi |
+|---|---|---|---|
+| Thời gian | ≤ today | dueDate = hôm nay | Đánh dấu quá hạn |
+| | > today | dueDate tương lai | Không quá hạn |
+| Vai trò | Thủ thư | librarian | Xem tất cả |
+| | Thành viên | member | Xem của mình |
 
 ### IDM — `<!-- Nhóm tự bổ sung cho REQ-05 đến REQ-08 -->`
 
