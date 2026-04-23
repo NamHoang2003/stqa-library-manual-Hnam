@@ -1,9 +1,9 @@
 # SRS — Đặc tả yêu cầu phần mềm / Software Requirements Specification
 
-> **📚 Hệ thống hư cấu / Fictional System**: Thư viện ABC là hệ thống **hư cấu** được thiết kế cho mục đích học tập. Tên nhân vật, tổ chức và dữ liệu đều là giả lập. / *ABC Library is a **fictional** system designed for educational purposes. All names, organizations, and data are simulated.*
+> **📚 Hệ thống hư cấu / Fictional System**: quán cà phê ABC là hệ thống **hư cấu** được thiết kế cho mục đích học tập. Tên nhân vật, tổ chức và dữ liệu đều là giả lập. / 
 
-**Hệ thống**: Quản lý mượn sách Thư viện ABC  
-**URL**: https://stqa.rbc.vn  
+**Hệ thống**: Quản lý quán cà phê ABC 
+**URL**: 
 **Phiên bản**: 1.0  
 **Ngôn ngữ giao diện**: Tiếng Việt (mặc định), English  
 **Công nghệ**: Flutter Web (CanvasKit renderer)
@@ -12,7 +12,7 @@
 |---|---|
 | **Tác giả** | Lê Phân Tích — Business Analyst (BA) |
 | **Ngày tạo** | 05/06/2024 |
-| **Dựa trên** | [BRD v1.0](BRD-yeu-cau-nghiep-vu.md) — Yêu cầu nghiệp vụ từ Giám đốc Thư viện ABC (01/06/2024) |
+| **Dựa trên** | [BRD v1.0](BRD-yeu-cau-nghiep-vu.md) — Yêu cầu nghiệp vụ từ Chủ quán A (01/06/2024) |
 | **Trạng thái** | Đã duyệt bởi các bên liên quan |
 
 ---
