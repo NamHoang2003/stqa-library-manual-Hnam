@@ -190,9 +190,3 @@ flowchart TD
 | **Người tiếp nhận** | Nguyễn Văn Quản | Trưởng dự án / PM, Công ty XYZ | 16/04/2026 |
 
 ```
-
-**Hướng dẫn sử dụng:**  
-Copy toàn bộ nội dung trên → Paste vào một file mới → Lưu với tên:  
-`BRD-yeu-cau-nghiep-vu-coffee.md`
-
-Bạn muốn mình tiếp tục viết **SRS đầy đủ** cho Hệ thống Quản lý Quán Cà Phê ABC luôn không? Mình có thể viết ngay với cấu trúc tương tự SRS Thư viện.
