@@ -2,8 +2,8 @@
 
 > **📚 Hệ thống hư cấu / Fictional System**: quán cà phê ABC là hệ thống **hư cấu** được thiết kế cho mục đích học tập. Tên nhân vật, tổ chức và dữ liệu đều là giả lập. / 
 
-**Hệ thống**: Quản lý quán cà phê ABC 
-**URL**:
+**Hệ thống**: Quản lý quán cà phê ABC  
+**URL**:  
 **Phiên bản**: 1.0  
 **Ngôn ngữ giao diện**: Tiếng Việt (mặc định), English  
 **Công nghệ**: Flutter Web (CanvasKit renderer)
