@@ -8,8 +8,8 @@
 
 | Mục | Thông tin |
 |-----|----------|
-| **Nhóm** | `<!-- Tên nhóm -->` |
-| **Lớp** | `<!-- VD: SE001.P11 -->` |
+| **Nhóm** | `Hnam` |
+| **Lớp** | `DCCTCLC66A2` |
 | **Ngày báo cáo** | `<!-- DD/MM/YYYY -->` |
 | **Hệ thống kiểm thử** | https://stqa.rbc.vn — v1.0 |
 
