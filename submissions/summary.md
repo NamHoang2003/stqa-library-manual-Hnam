@@ -8,9 +8,9 @@
 
 | Mục | Thông tin |
 |-----|----------|
-| **Nhóm** | `Hnam` |
+| **Nhóm** | `2` |
 | **Lớp** | `DCCTCLC66A2` |
-| **Ngày báo cáo** | `<!-- DD/MM/YYYY -->` |
+| **Ngày báo cáo** | `28/5/2026` |
 | **Hệ thống kiểm thử** | https://stqa.rbc.vn — v1.0 |
 
 ---

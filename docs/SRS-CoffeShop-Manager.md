@@ -141,7 +141,7 @@ Hệ thống quản lý mượn sách cho một thư viện nhỏ. Hai vai trò 
 | Mục | Nội dung |
 |-----|---------|
 | **Mô tả** | Quản lý thông tin và tài khoản nhân viên |
-| **Chức năng** | Thêm, sửa, xóa nhân viên, thay đổi trạng thái (Đang làm / Nghỉ việc/ Tạm ngưng) |
+| **Chức năng** | Thêm, xóa nhân viên, quản lý |
 | **Input** | Họ tên, email, số điện thoại, vai trò |
 | **Quy tắc** | Email phải hợp lệ và không trùng lặp |
 | **Quyền truy cập** | Chỉ quản lý |

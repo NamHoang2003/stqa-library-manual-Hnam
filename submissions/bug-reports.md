@@ -6,8 +6,8 @@
 
 | Thông tin | |
 |---|---|
-| **Nhóm** | `<!-- Tên nhóm -->` |
-| **Ngày báo cáo** | `<!-- DD/MM/YYYY -->` |
+| **Nhóm** | `Nhóm 2` |
+| **Ngày báo cáo** | `28/5/2026` |
 
 ---
 
@@ -16,8 +16,8 @@
 | Thuộc tính | Chi tiết |
 |-----------|---------|
 | **Mã lỗi** | BUG-01 |
-| **TC liên quan** | `<!-- TC-xx -->` |
-| **REQ liên quan** | `<!-- REQ-xx -->` |
+| **TC liên quan** | `TC1` |
+| **REQ liên quan** | `REQ` |
 | **Mức độ** | `<!-- High / Medium / Low -->` |
 | **Người phát hiện** | `<!-- Họ tên thành viên -->` |
 | **Ngày phát hiện** | `<!-- DD/MM/YYYY -->` |
@@ -27,8 +27,8 @@
 `<!-- Mô tả hành vi lỗi cụ thể -->`
 
 **Môi trường:**
-- Trình duyệt: Chrome `<!-- version -->`
-- Hệ điều hành: `<!-- OS -->`
+- Trình duyệt: Edge 
+- Hệ điều hành: `Windows`
 - Ngôn ngữ giao diện: Tiếng Việt
 
 **Điều kiện tiên quyết:**
