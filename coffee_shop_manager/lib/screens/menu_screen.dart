@@ -10,9 +10,9 @@ class MenuScreen extends StatefulWidget {
 }
 
 class _MenuScreenState extends State<MenuScreen> {
-  List<Drink> drink_list = [
+  List<Drink> drinkList = [
     Drink('Trà Đào Cam Xả', 30000, 'Còn đồ', 'VND'),
-    Drink('Trà Sữa Bạc Hà', 20000, '', 'VND'),
+    Drink('Trà Sữa Bạc Hà', 20000, 'Còn đồ', 'VND'),
     Drink('Trà đào xả tắc', 35000, 'Còn đồ', 'VND'),
     Drink('Trà Sữa Việt Quất', 23000, 'Còn đồ', 'VND'),
     Drink('Caramel Vị Muối Biển', 30000, 'Còn đồ', 'VND'),

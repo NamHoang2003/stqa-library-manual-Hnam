@@ -1,8 +1,14 @@
 import 'package:coffee_shop_manager/models/account.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   List<Account> accounts = [
     Account('Manager', 'Ab123456'),
     Account('Staff1', 'Ab123456'),
@@ -16,7 +22,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
+        child: SizedBox(
           width: 30,
           height: 60,
           child: Column(
