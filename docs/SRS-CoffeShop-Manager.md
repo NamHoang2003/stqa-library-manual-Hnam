@@ -1,4 +1,4 @@
-# SRS — Đặc tả yêu cầu phần mềm / Software Requirements Specification
+# SRS — Đặc tả yêu cầu phần mềm
 
 > **📚 Hệ thống hư cấu / Fictional System**: quán cà phê ABC là hệ thống **hư cấu** được thiết kế cho mục đích học tập. Tên nhân vật, tổ chức và dữ liệu đều là giả lập. / 
 
@@ -12,12 +12,12 @@
 |---|---|
 | **Tác giả** | Lê Phân Tích — Business Analyst (BA) |
 | **Ngày tạo** | 05/06/2024 |
-| **Dựa trên** | [BRD v1.0](BRD-yeu-cau-nghiep-vu.md) — Yêu cầu nghiệp vụ từ Chủ quán A (01/06/2024) |
+| **Dựa trên** | [BRD v1.0](BRD-yeu-cau-nghiep-vu.md) — Yêu cầu nghiệp vụ từ Chủ quán Cà phê ABC (01/06/2024) |
 | **Trạng thái** | Đã duyệt bởi các bên liên quan |
 
 ---
 
-## 📖 Hướng dẫn đọc tài liệu / How to Read This Document
+## 📖 Hướng dẫn đọc tài liệu
 
 > Phần này dành cho sinh viên, giúp bạn hiểu **bối cảnh** của tài liệu SRS trước khi đi vào nội dung kỹ thuật ở **mục 1** trở đi.
 
@@ -38,32 +38,17 @@ sequenceDiagram
 
 | Bước | Tài liệu | Ai tạo | Mục đích |
 |------|----------|--------|----------|
-| 1 | **BRD** — Yêu cầu nghiệp vụ 📄 [Xem BRD](BRD-yeu-cau-nghiep-vu.md) | Khách hàng (Giám đốc Thư viện ABC) + PM | Mô tả **vấn đề kinh doanh** cần giải quyết |
+| 1 | **BRD** — Yêu cầu nghiệp vụ 📄 [Xem BRD](BRD-yeu-cau-nghiep-vu.md) | Khách hàng (Chủ quán Cà phê ABC) + PM | Mô tả **vấn đề kinh doanh** cần giải quyết |
 | 2 | **SRS** — Đặc tả yêu cầu phần mềm *(tài liệu này)* | Business Analyst (BA) | Chuyển yêu cầu nghiệp vụ thành **yêu cầu kỹ thuật** chi tiết |
-| 3 | **Test Cases** — Kịch bản kiểm thử | Tester *(vai trò của bạn)* | Kiểm tra phần mềm **có đúng yêu cầu không** |
 
 ### Các bên liên quan (Stakeholders)
 
 | Vai trò | Đại diện | Quan tâm điều gì |
 |---------|----------|-------------------|
-| **Khách hàng** (Customer) | Ông Trần Văn Thư — Giám đốc Thư viện ABC | Hệ thống giải quyết đúng vấn đề nghiệp vụ |
-| **Quản lý dự án** (PM) | Bà Nguyễn Thị Quản — Trưởng dự án | Phạm vi, tiến độ, chi phí |
+| **Khách hàng** (Customer) | Bà Lê Thị Cà Phê — Chủ quán Cà phê ABC | Hệ thống giải quyết đúng vấn đề nghiệp vụ |
+| **Quản lý dự án** (PM) | Ông Nguyễn Văn Quản — Trưởng dự án | Phạm vi, tiến độ, chi phí |
 | **Phân tích nghiệp vụ** (BA) | Lê Phân Tích | Yêu cầu rõ ràng, đầy đủ, không mâu thuẫn |
 | **Phát triển** (Dev) | Đội phát triển, Công ty XYZ | Yêu cầu đủ chi tiết để triển khai code |
-| **Kiểm thử** (Tester) | **Bạn** | Yêu cầu đủ chi tiết để viết test case và xác định kết quả mong đợi |
-
-### Tester dựa vào đâu để kiểm thử?
-
-Tester **không tự nghĩ ra** kết quả đúng/sai. Mọi phán đoán đều dựa trên tài liệu SRS:
-
-| Câu hỏi | Tìm ở đâu trong SRS |
-|---------|---------------------|
-| Input là gì? | Cột **Input** / **Điều kiện** trong mỗi REQ |
-| Kết quả mong đợi (Expected Result)? | Cột **Quy tắc** / **Kết quả** / **Thông báo lỗi** |
-| Dữ liệu test nào? | **Mục 3 — Dữ liệu ban đầu** |
-| Ràng buộc kỹ thuật? | **Mục 5 — Ràng buộc kỹ thuật** |
-
-> **Nguyên tắc quan trọng**: Nếu SRS ghi rõ hệ thống phải hoạt động theo cách X, nhưng thực tế hệ thống hoạt động khác → đó là **bug**. SRS chính là **nguồn sự thật** (source of truth) để xác định đúng/sai.
 
 ### Sinh viên cần làm gì với tài liệu này?
 
@@ -75,14 +60,14 @@ Tester **không tự nghĩ ra** kết quả đúng/sai. Mọi phán đoán đề
 
 ---
 
-## 1. Tổng quan hệ thống / System Overview
+## 1. Tổng quan hệ thống
 
 Hệ thống quản lý mượn sách cho một thư viện nhỏ. Hai vai trò người dùng:
 
 | Vai trò | Quyền hạn |
 |---------|----------|
-| **Thủ thư** (Librarian) | Xem tất cả sách, mượn/trả sách cho thành viên, quản lý thành viên, kiểm tra quá hạn, xem tất cả phiếu mượn, khôi phục dữ liệu |
-| **Thành viên** (Member) | Xem danh sách sách, tìm kiếm/lọc, mượn sách (cho bản thân), trả sách (của mình), xem phiếu mượn của mình |
+| **Quản lý** (Manager) | Xem doanh thu theo ngày/tuần, top món bán chạy, quản lý nhân viên, xem danh sách đồ uống, tìm kiếm và lọc đồ uống |
+| **Nhân viên** (Staff) | Tạo đơn hàng, thanh toán đơn hàng, xem danh sách đồ uống, tìm kiếm và lọc đồ uống, tạo đơn hàng |
 
 ### Đặc điểm kỹ thuật
 
@@ -93,163 +78,139 @@ Hệ thống quản lý mượn sách cho một thư viện nhỏ. Hai vai trò 
 
 ---
 
-## 2. Danh sách yêu cầu / Requirements List
+## 2. Danh sách yêu cầu
 
-### REQ-01: Đăng nhập / Login
+### REQ-01: Đăng nhập
 
 | Mục | Nội dung |
 |-----|---------|
 | **Mô tả** | Người dùng đăng nhập bằng email và mật khẩu |
 | **Input** | Email, mật khẩu |
-| **Quy tắc** | `email@domain.ext` + mật khẩu đúng → chuyển sang trang chủ. Sai → hiểu thị thông báo lỗi phù hợp. |
-| **Thông báo lỗi** | "Không tìm thấy thành viên" (email sai), "Mật khẩu không đúng" (MK sai), "Vui lòng nhập email và mật khẩu" (bỏ trống) |
+| **Phân quyền** | `manager@abc.com` + mật khẩu đúng → chuyển sang trang chủ. Sai → hiểu thị thông báo lỗi phù hợp. |
+| **Thông báo lỗi** | "Không tìm thấy tài khoản" (email sai), "Mật khẩu không đúng" (MK sai), "Vui lòng nhập email và mật khẩu" (bỏ trống) |
 | **Sau đăng nhập** | Hiển thị tên người dùng + vai trò trên thanh ứng dụng (AppBar) |
 
-### REQ-02: Xem danh sách sách / View Book List
+### REQ-02: Xem danh sách đồ uống
 
 | Mục | Nội dung |
 |-----|---------|
-| **Mô tả** | Hiển thị tất cả sách trong thư viện |
-| **Thông tin mỗi sách** | Tên sách, tác giả, thể loại, năm xuất bản, trạng thái (Có sẵn / Đã mượn) |
-| **Quyền truy cập** | Cả Thủ thư và Thành viên đều xem được |
-| **Cập nhật real-time** | Khi sách được mượn/trả → trạng thái cập nhật ngay lập tức |
+| **Mô tả** | Hiển thị menu đồ uống kèm thông tin chi tiết |
+| **Thông tin đồ uống** | Tên đồ uống, giá, trạng thái (Còn / Hết) |
+| **Quyền truy cập** | Cả quản lý và nhân viên đều xem được |
+| **Cập nhật real-time** | Trạng thái tự động cập nhật khi hết nguyên liệu hoặc có thay đổi từ kho |
 
-### REQ-03: Tìm kiếm và lọc sách / Search & Filter Books
-
+### REQ-03: Tìm kiếm và lọc
 | Mục | Nội dung |
 |-----|---------|
-| **Tìm kiếm** | Theo tên sách hoặc tác giả |
-| **Lọc** | Theo thể loại |
+| **Mô tả** | Tìm kiếm và lọc danh sách đồ uống |
+| **Tìm kiếm** | Theo tên đồ uống |
+| **Lọc** | Theo loại đồ uống, mức giá (dưới 50k, 50-80k, trên 80k) |
 | **Quy tắc** | Tìm kiếm **KHÔNG phân biệt chữ hoa/thường** (case-insensitive) |
-| **Không có kết quả** | Hiển thị thông báo "Không tìm thấy sách" |
+| **Không có kết quả** | Hiển thị thông báo "Không tìm thấy đồ uống phù hợp" |
 
-### REQ-04: Mượn sách / Borrow Book
-
-| Mục | Nội dung |
-|-----|---------|
-| **Điều kiện** | Sách ở trạng thái "Có sẵn" (available) |
-| **Giới hạn** | Tối đa **3 sách / thành viên** cùng lúc |
-| **Thời hạn** | 14 ngày kể từ ngày mượn |
-| **Từ chối nếu** | Sách đã được mượn, thành viên đạt giới hạn 3 sách, thành viên bị **tạm ngưng** hoặc **hết hạn** |
-| **Thông báo lỗi** | Phải mô tả **đúng lý do** từ chối (tạm ngưng ≠ hết hạn) |
-
-### REQ-05: Trả sách / Return Book
+### REQ-04: Tạo đơn hàng
 
 | Mục | Nội dung |
 |-----|---------|
-| **Điều kiện** | Chỉ trả sách mà thành viên **đang mượn** |
-| **Kết quả** | Sách chuyển về trạng thái "Có sẵn" |
-| **Quá hạn** | Nếu trả quá hạn → hệ thống phải hiển thị **cảnh báo quá hạn** |
-
-### REQ-06: Xử lý sách quá hạn / Overdue Handling
-
-| Mục | Nội dung |
-|-----|---------|
-| **Kích hoạt** | Thủ thư nhấn nút "Kiểm tra quá hạn" |
-| **Quy tắc** | Phiếu mượn có `dueDate` ≤ ngày hiện tại → đánh dấu "Quá hạn" |
-| **Hiển thị** | Thủ thư xem tất cả phiếu quá hạn. Thành viên thấy phiếu của mình nếu quá hạn. |
-
-### REQ-07: Quản lý thành viên / Member Management
+| **Mô tả** | Nhân viên tạo đơn hàng cho khách hàng |
+| **Input** | Chọn nhiều món đồ uống, số lượng từng món đồ uống |
+| **Quy tắc** | Tối đa 10 món / đơn. Kiểm tra tồn kho nguyên liệu trước khi thêm. Tự động tạm tính |
+| **Quyền truy cập** | Chỉ nhân viên |
+| **Thông báo lỗi** | Thông báo rõ ràng khi nguyên liệu không đủ |
+### REQ-05: Thanh toán đơn hàng
 
 | Mục | Nội dung |
 |-----|---------|
-| **Chức năng** | Thêm thành viên mới (chỉ Thủ thư) |
-| **Input** | Họ tên, email, số điện thoại |
-| **Xác thực email** | Email phải hợp lệ (có `@` **VÀ** có dấu `.` trong phần domain, ví dụ `user@domain.com`). Email `user@domain` là **KHÔNG hợp lệ**. |
-| **Trùng email** | Không cho phép tạo email đã tồn tại → thông báo lỗi |
+| **Mô tả** | Thanh toán và hoàn tất đơn hàng |
+| **Chức năng** | Tính tổng tiền, áp dụng voucher (giảm % hoặc giảm cố định), chọn hình thức thanh tóa |
+| **Hình thức thanh toán** | Tiền mặt, chuyển khoản, ví điện tử |
+| **Kết quả** | Ghi nhận thanh toán, in hóa đơn đơn gairn (hiển thị trên màn hình) |
+| **Quyền truy cập** | Chỉ nhân viên |
 
-### REQ-08: Tra cứu phiếu mượn / Borrow Record Lookup
+### REQ-06: Quản lý kho nguyên liệu
 
 | Mục | Nội dung |
 |-----|---------|
-| **Thủ thư** | Xem tất cả phiếu mượn của mọi thành viên |
-| **Thành viên** | Chỉ xem phiếu mượn **của chính mình**. **KHÔNG được xem phiếu mượn của thành viên khác.** |
-| **Thông tin phiếu** | Mã phiếu, sách mượn, ngày mượn, ngày hết hạn, trạng thái (Đang mượn / Đã trả / Quá hạn) |
+| **Mô tả** | Quản lý tồn kho nguyên liệu phục vụ pha chế |
+| **Chức năng** | Xem tồn kho, cập nhật thủ công, theo dõi tự động khi có đơn hàng | 
+| **Cảnh báo** | Hiển thị cảnh báo khi nguyên liệu sắp hết (< 10 đơn vị) |
+| **Quyền truy cập** | Chỉ quản lý |
+
+### REQ-07: Quản lý nhân viên
+
+| Mục | Nội dung |
+|-----|---------|
+| **Mô tả** | Quản lý thông tin và tài khoản nhân viên |
+| **Chức năng** | Thêm, sửa, xóa nhân viên, thay đổi trạng thái (Đang làm / Nghỉ việc/ Tạm ngưng) |
+| **Input** | Họ tên, email, số điện thoại, vai trò |
+| **Quy tắc** | Email phải hợp lệ và không trùng lặp |
+| **Quyền truy cập** | Chỉ quản lý |
+
+### REQ-08: Báo cáo doanh thu
+
+| Mục | Nội dung |
+|-----|---------|
+| **Mô tả** | Xem các báo cáo kinh doanh của quán |
+| **Loại báo cáo** | Doanh thu theo ngày / tuần / tháng, top 5 món bán chạy, số đơn hàng chưa thanh toán |
+| **Quyền truy cập** | Chỉ quản lý |
 
 ---
 
 ## 3. Dữ liệu ban đầu / Seed Data
 
-### 3.1. Tài khoản / Accounts
+### 3.1. Tài khoản nhân viên
 
-| Email | Mật khẩu | Vai trò | Trạng thái | ID |
+| ID | Tên nhân viên | Email | Vai trò | Trạng thái | Số điện thoại | 
 |-------|----------|---------|-----------|-----|
-| `librarian@library.com` | `admin123` | Thủ thư | Hoạt động | LIB001 |
-| `ba.nguyen@email.com` | `password123` | Thành viên | Hoạt động | MEM002 |
-| `dam.tran@email.com` | `password123` | Thành viên | Hoạt động | MEM003 |
-| `cu.le@email.com` | `password123` | Thành viên | Tạm ngưng | MEM004 |
-| `binh.pham@email.com` | `password123` | Thành viên | Hết hạn | MEM005 |
-| `biet.hoang@email.com` | `password123` | Thành viên | Hoạt động | MEM006 |
+| EMP001 | Nguyễn Văn Quản | `manger@abc.com` | Manager | Đang làm | 0901234567 |
+| EMP002 | Trần Thị Phục Vụ | `staff1@abc.com` | Staff | Đang làm | 0907654321 |
+| EMP003 | Lê Văn Pha Chế | `staff2@abc.com` | Staff | Đang làm | 0908889999 |
+| EMP004 | Phạm Tạm Ngưng | `staff3@abc.com` | Staff | Đang làm | 0908889999 |
+| EMP005 | Manager Coffee | `manager@coffee.com` | Manager | Đang làm | 0901112222 |
+| EMP006 | Staff Coffee | `staff@coffee.com` | Manager | Đang làm | 090333444 |
+| EMP007 | Librarian (Test) | `librarian@library.com` | Manager | Đang làm | 0905556666 |
+| EMP008 | Bá Nguyễn | `ba.nguyen@gmail.com` | Staff | Đang làm | 0907778888 |
 
-### 3.2. Sách / Books
+### 3.2. Danh sách đồ uống
 
-| Mã sách | Tên sách | Tác giả | Thể loại | Năm XB | Trạng thái ban đầu |
+| Mã đồ uống | Tên đồ uống | Giá | Loại | Trạng thái ban đầu |
 |---------|----------|---------|----------|--------|-------------------|
-| BOOK001 | Lập trình Flutter cơ bản | Nguyễn Minh Đức | Công nghệ | 2023 | Có sẵn |
-| BOOK002 | Cấu trúc dữ liệu và giải thuật | Trần Văn Hùng | Công nghệ | 2022 | Có sẵn |
-| BOOK003 | Kiểm thử phần mềm nhập môn | Lê Thị Hoa | Công nghệ | 2024 | Đã mượn (bởi MEM002) |
-| BOOK004 | Quản trị dự án phần mềm | Phạm Quốc Bảo | Quản trị | 2021 | Có sẵn |
-| BOOK005 | Trí tuệ nhân tạo đại cương | Võ Văn Sơn | Công nghệ | 2023 | Có sẵn |
-| BOOK006 | Kỹ năng giao tiếp | Nguyễn Thị Lan | Kỹ năng mềm | 2020 | Có sẵn |
-| BOOK007 | Kinh tế vi mô | Đỗ Quang Minh | Kinh tế | 2019 | Thất lạc |
-| BOOK008 | Mạng máy tính | Lý Văn Tài | Công nghệ | 2022 | Có sẵn |
-| BOOK009 | Nhập môn lập trình Python | Nguyễn Minh Đức | Công nghệ | 2024 | Có sẵn |
-| BOOK010 | An toàn thông tin cơ bản | Trần Quốc An | Công nghệ | 2023 | Có sẵn |
-| BOOK011 | Hệ điều hành Linux | Lý Văn Tài | Công nghệ | 2021 | Có sẵn |
-| BOOK012 | Quản trị chiến lược | Phạm Quốc Bảo | Quản trị | 2022 | Có sẵn |
-| BOOK013 | Quản trị nhân sự hiện đại | Hoàng Thanh Tùng | Quản trị | 2023 | Đã mượn (bởi MEM006) |
-| BOOK014 | Kinh tế vĩ mô | Đỗ Quang Minh | Kinh tế | 2020 | Có sẵn |
-| BOOK015 | Nguyên lý kế toán | Vũ Thị Mai | Kinh tế | 2021 | Có sẵn |
-| BOOK016 | Kỹ năng thuyết trình | Nguyễn Thị Lan | Kỹ năng mềm | 2022 | Có sẵn |
-| BOOK017 | Phương pháp nghiên cứu khoa học | Trương Văn Phúc | Giáo dục | 2023 | Có sẵn |
-| BOOK018 | Tâm lý học giáo dục | Trương Văn Phúc | Giáo dục | 2021 | Có sẵn |
-| BOOK019 | Văn học Việt Nam đại cương | Lê Minh Khuê | Văn học | 2018 | Có sẵn |
-| BOOK020 | Dẫn luận ngôn ngữ học | Lê Minh Khuê | Văn học | 2020 | Thất lạc |
+| DRK001 | Cà phê đen | 20,000 | Cà phê |  Còn đồ |
+| DRK002 | Cà phê sữa | 25,000 | Cà phê |  Còn đồ |
+| DRK003 | Bạc xỉu | 29,000 | Cà phê |  Còn đồ |
+| DRK004 | Trà Đào Cam Sả | 35,000 | Trà |  Còn đồ |
+| DRK005 | Trà Đào xả tắc | 35,000 | Trà |  Còn đồ |
+| DRK006 | Trà Sữa Việt Quất | 32,000 | Trà sữa |  Còn đồ |
+| DRK007 | Trà Sữa Bạc Hà | 30,000 | Trà sữa |  Còn đồ |
+| DRK008 | Caramel Vị Muối Biển | 45,000 | Đá xay |  Còn đồ |
+| DRK009 | Trà Sữa Chuối Nướng | 40,000 | Trà sữa |  Còn đồ |
+| DRK010 | Trà Sữa Matcha | 35,000 | Trà sữa |  Còn đồ |
+| DRK011 | Sinh tố Bơ | 35,000 | Sinh tố |  Còn đồ |
+| DRK012 | Sinh tố Xoài | 35,000 | Sinh tố |  Còn đồ |
 
-### 3.3. Phiếu mượn ban đầu / Initial Borrow Records
+### 3.3. Kho nguyên liệu
 
-| Mã phiếu | Thành viên | Sách | Ngày mượn | Ngày hết hạn | Trạng thái |
+| Tên nguyên liệu | Số lượng ban đầu | Đơn vị |
 |-----------|-----------|------|-----------|-------------|-----------|
-| BR001 | MEM002 (ba.nguyen) | BOOK003 (Kiểm thử phần mềm nhập môn) | 01/09/2024 | 15/09/2024 | Đang mượn (quá hạn thực tế, cần Thủ thư nhấn "Kiểm tra quá hạn" để cập nhật) |
-| BR002 | MEM003 (dam.tran) | BOOK001 (Lập trình Flutter cơ bản) | 10/08/2024 | 24/08/2024 | Đã trả (20/08/2024) |
-| BR003 | MEM006 (biet.hoang) | BOOK013 (Quản trị nhân sự hiện đại) | 01/10/2024 | 15/10/2024 | Đang mượn |
-| BR004 | MEM002 (ba.nguyen) | BOOK005 (Trí tuệ nhân tạo đại cương) | 01/07/2024 | 15/07/2024 | Đã trả (10/07/2024) |
-| BR005 | MEM003 (dam.tran) | BOOK006 (Kỹ năng giao tiếp) | 01/06/2024 | 15/06/2024 | Đã trả (20/06/2024 — trễ hạn) |
+| Cà phê bột | 1000.0 | g |
+| Sữa tươi | 2000.0 | ml |
+| Đường | 1500.0 | g |
+| Sữa đặc | 1000.0 | g |
+| Ly giấy | 100.0 | cái |
+| Trà túi lọc | 50.0 | cái |
+| Đào ngâm | 100.0 | miếng |
+| Siro bạc hà | 500.0 | ml |
+| Việt quất mứt | 500.0 | g |
+| Bột matcha | 300.0 | g |
 
-### 3.4. Tham số hệ thống / System Parameters
+### 3.4. Đơn hàng ban đầu
 
 | Tham số | Giá trị |
 |---------|---------|
-| Số sách tối đa / thành viên | **3** |
-| Thời hạn mượn | **14 ngày** |
-| Thể loại có sẵn | Công nghệ, Quản trị, Kinh tế, Kỹ năng mềm, Giáo dục, Văn học |
+| Số món tối đa | 10 |
+| Voucher hỗ trợ | ABC10, COFFEE20 |
+| Ngưỡng cảnh báo nguyên liệu | < 10 đơn vị |
 
 ---
 
-## 4. Giao diện hệ thống / System Interface
 
-### 4.1. Màn hình chính (sau đăng nhập)
-
-| Tab | Mô tả | Quyền truy cập |
-|-----|-------|----------------|
-| **Sách** | Danh sách sách + ô tìm kiếm + ô lọc thể loại + nút mượn | Tất cả |
-| **Mượn / Trả** | Phiếu mượn của tôi + tra cứu phiếu mượn (theo mã thành viên) + trả sách | Tất cả |
-| **Thành viên** | Danh sách thành viên + thêm thành viên mới | Chỉ Thủ thư |
-
-### 4.2. Chức năng đặc biệt (chỉ Thủ thư)
-
-| Chức năng | Mô tả |
-|-----------|-------|
-| Khôi phục dữ liệu | Reset tất cả dữ liệu về seed data |
-| Kiểm tra quá hạn | Quét tất cả phiếu mượn, đánh dấu quá hạn |
-| Thêm thành viên | Tạo thành viên mới |
-
----
-
-## 5. Ràng buộc kỹ thuật / Technical Constraints
-
-1. **Client-side only** — Không có server backend. Dữ liệu mất khi refresh trang.
-2. **Single copy** — Mỗi đầu sách chỉ có 1 bản. Khi mượn → không ai khác mượn được.
-3. **No persistent storage** — Không dùng localStorage, sessionStorage, hay database.
-4. **CanvasKit renderer** — Toàn bộ UI vẽ trên `<canvas>`. Test automation cần bật Flutter Semantics Tree.
-5. **Bilingual UI** — Giao diện song ngữ Việt/Anh, mặc định Tiếng Việt.

@@ -11,15 +11,25 @@ class EmployeeScreen extends StatefulWidget {
 class _EmployeeScreenState extends State<EmployeeScreen> {
   // Mock data ban đầu
   List<Employee> employees = [
-    Employee(id: 'EMP002', name: 'Nguyễn Văn B', email: 'b@gmail.com', status: 'Đang làm'),
-    Employee(id: 'EMP003', name: 'Trần Thị C', email: 'c@gmail.com', status: 'Nghỉ việc'),
+    Employee(
+      id: 'EMP002',
+      name: 'Nguyễn Văn B',
+      email: 'b@coffee.com',
+      status: 'Đang làm',
+    ),
+    Employee(
+      id: 'EMP003',
+      name: 'Trần Thị C',
+      email: 'c@coffee.com',
+      status: 'Nghỉ việc',
+    ),
   ];
 
-  String currentRole = 'Admin001'; 
+  String currentRole = 'Admin001';
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  final _formKey = GlobalKey<FormState>(); 
+  final _formKey = GlobalKey<FormState>();
 
   void showAlert(String message, {bool isSuccess = false}) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -49,15 +59,13 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
         return;
       }
 
-      String newId = 'EMP${DateTime.now().millisecondsSinceEpoch.toString().substring(10)}';
+      String newId =
+          'EMP${DateTime.now().millisecondsSinceEpoch.toString().substring(10)}';
 
       setState(() {
-        employees.add(Employee(
-          id: newId,
-          name: name,
-          email: email,
-          status: 'Đang làm',
-        ));
+        employees.add(
+          Employee(id: newId, name: name, email: email, status: 'Đang làm'),
+        );
       });
 
       showAlert('Thêm nhân viên thành công!', isSuccess: true);
@@ -105,20 +113,25 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Tài khoản: $currentRole', style: const TextStyle(fontWeight: FontWeight.bold)),
+                  Text(
+                    'Tài khoản: $currentRole',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   Row(
                     children: [
                       ElevatedButton(
-                        onPressed: () => setState(() => currentRole = 'Admin001'),
+                        onPressed: () =>
+                            setState(() => currentRole = 'Admin001'),
                         child: const Text('Quyền Quản lý (Admin)'),
                       ),
                       const SizedBox(width: 10),
                       ElevatedButton(
-                        onPressed: () => setState(() => currentRole = 'Staff001'),
+                        onPressed: () =>
+                            setState(() => currentRole = 'Staff001'),
                         child: const Text('Quyền Nhân viên (Staff)'),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
@@ -135,7 +148,13 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Thêm nhân viên mới', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    const Text(
+                      'Thêm nhân viên mới',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     const SizedBox(height: 10),
                     Row(
                       children: [
@@ -149,7 +168,8 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
                               prefixIcon: Icon(Icons.person),
                             ),
                             validator: (value) {
-                              if (value == null || value.trim().isEmpty) return 'Vui lòng nhập tên';
+                              if (value == null || value.trim().isEmpty)
+                                return 'Vui lòng nhập tên';
                               return null;
                             },
                           ),
@@ -165,8 +185,12 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
                               prefixIcon: Icon(Icons.email),
                             ),
                             validator: (value) {
-                              if (value == null || value.trim().isEmpty) return 'Vui lòng nhập email';
-                              if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value.trim())) return 'Email không hợp lệ';
+                              if (value == null || value.trim().isEmpty)
+                                return 'Vui lòng nhập email';
+                              if (!RegExp(
+                                r'^[^@]+@[^@]+\.[^@]+',
+                              ).hasMatch(value.trim()))
+                                return 'Email không hợp lệ';
                               return null;
                             },
                           ),
@@ -178,7 +202,10 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blueGrey[800],
                             foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 20,
+                            ),
                           ),
                           icon: const Icon(Icons.add),
                           label: const Text('Thêm ngay'),
@@ -192,7 +219,10 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
           ),
 
           const SizedBox(height: 10),
-          const Text('Danh sách nhân sự hệ thống', style: TextStyle(color: Colors.grey)),
+          const Text(
+            'Danh sách nhân sự hệ thống',
+            style: TextStyle(color: Colors.grey),
+          ),
 
           // 3. Danh sách hiển thị nhân viên
           Expanded(
@@ -201,20 +231,34 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
               itemBuilder: (context, index) {
                 final emp = employees[index];
                 return Card(
-                  margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 5,
+                  ),
                   child: ListTile(
-                    title: Text('${emp.name} (${emp.id})', style: const TextStyle(fontWeight: FontWeight.bold)),
-                    subtitle: Text('Email: ${emp.email} | Trạng thái: ${emp.status}'),
+                    title: Text(
+                      '${emp.name} (${emp.id})',
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: Text(
+                      'Email: ${emp.email} | Trạng thái: ${emp.status}',
+                    ),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         IconButton(
-                          icon: const Icon(Icons.swap_horiz, color: Colors.blue),
+                          icon: const Icon(
+                            Icons.swap_horiz,
+                            color: Colors.blue,
+                          ),
                           onPressed: () => toggleStatus(emp),
                           tooltip: 'Đổi trạng thái làm việc/nghỉ việc',
                         ),
                         IconButton(
-                          icon: const Icon(Icons.delete_outline, color: Colors.red),
+                          icon: const Icon(
+                            Icons.delete_outline,
+                            color: Colors.red,
+                          ),
                           onPressed: () => deleteEmployee(emp.id),
                           tooltip: 'Xóa khỏi hệ thống',
                         ),
@@ -222,16 +266,21 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
                     ),
                     onTap: () {
                       if (emp.status == 'Nghỉ việc') {
-                        showAlert('Nhân viên đã nghỉ việc, không thể thực hiện thao tác nghiệp vụ!');
+                        showAlert(
+                          'Nhân viên đã nghỉ việc, không thể thực hiện thao tác nghiệp vụ!',
+                        );
                       } else {
-                        showAlert('Nhân viên đang hoạt động bình thường.', isSuccess: true);
+                        showAlert(
+                          'Nhân viên đang hoạt động bình thường.',
+                          isSuccess: true,
+                        );
                       }
                     },
                   ),
                 );
               },
             ),
-          )
+          ),
         ],
       ),
     );

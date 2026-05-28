@@ -23,7 +23,7 @@ class AppStateProvider extends ChangeNotifier {
     Employee(
       id: 'EMP001',
       name: 'Nguyễn Văn Quản',
-      email: 'manager1@coffee.com',
+      email: 'manager@coffee.com',
       phone: '0901234567',
       role: 'Manager',
       status: 'Đang làm',
