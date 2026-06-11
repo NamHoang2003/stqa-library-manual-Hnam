@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:coffee_shop_manager/main.dart';
-import 'package:coffee_shop_manager/models/drink.dart';
 import 'package:coffee_shop_manager/screens/order_cart_panel.dart';
 
 class MenuScreen extends StatefulWidget {
