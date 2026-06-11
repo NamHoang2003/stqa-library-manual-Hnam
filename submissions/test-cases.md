@@ -163,18 +163,70 @@
 
 ## Bước 2: Test Cases
 
-<!-- Tự tổ chức bảng test case: có thể chia nhóm theo chức năng, theo REQ, hoặc theo luồng nghiệp vụ — tùy nhóm quyết định. -->
-<!-- Mỗi TC phải ánh xạ ngược về ít nhất 1 dòng trong bảng IDM ở Bước 1. -->
+| TC    | REQ    | Mô tả                                                          | Kết quả mong đợi             |
+| ----- | ------ | -------------------------------------------------------------- | ---------------------------- |
+| TC-01 | REQ-01 | Login [manager@abc.com](mailto:manager@abc.com)/admin123       | Đăng nhập thành công         |
+| TC-02 | REQ-01 | Login [manager@coffee.com](mailto:manager@coffee.com)/admin123 | Đăng nhập thành công         |
+| TC-03 | REQ-01 | Login [staff@coffee.com](mailto:staff@coffee.com)/staff123     | Đăng nhập thành công         |
+| TC-04 | REQ-01 | Sai mật khẩu                                                   | Báo lỗi mật khẩu             |
+| TC-05 | REQ-01 | Email không tồn tại                                            | Báo không tìm thấy tài khoản |
+| TC-06 | REQ-01 | Bỏ trống email và mật khẩu                                     | Báo yêu cầu nhập dữ liệu     |
+| TC-07 | REQ-02 | Xem danh sách đồ uống                                          | Hiển thị đầy đủ menu         |
+| TC-08 | REQ-02 | Kiểm tra tên, giá, trạng thái                                  | Hiển thị đúng                |
+| TC-09 | REQ-03 | Tìm "Cà phê"                                                   | Trả về các món cà phê        |
+| TC-10 | REQ-03 | Tìm không tồn tại                                              | Hiển thị không có kết quả    |
+| TC-11 | REQ-03 | Tìm kiếm không phân biệt hoa thường                            | Tìm đúng kết quả             |
+| TC-12 | REQ-04 | Thêm 1 món vào giỏ                                             | Thành công                   |
+| TC-13 | REQ-04 | Thêm nhiều món                                                 | Thành công                   |
+| TC-14 | REQ-04 | Cập nhật số lượng                                              | Tổng tiền cập nhật đúng      |
+| TC-15 | REQ-05 | Voucher ABC10                                                  | Giảm 10%                     |
+| TC-16 | REQ-05 | Voucher COFFEE20                                               | Giảm 20.000đ                 |
+| TC-17 | REQ-06 | Xem kho nguyên liệu                                            | Hiển thị tồn kho             |
+| TC-18 | REQ-07 | Kiểm tra dữ liệu EMP004                                        | Trạng thái đúng theo SRS     |
+| TC-19 | REQ-07 | Xem danh sách nhân viên                                        | Hiển thị đầy đủ              |
+| TC-20 | REQ-08 | Xem báo cáo doanh thu                                          | Hiển thị báo cáo             |
 
-| Mã TC | Mục tiêu kiểm thử | Tiền điều kiện | Bước thực hiện | Dữ liệu đầu vào | Kết quả mong đợi | REQ | Kỹ thuật |
-|-------|-------------------|---------------|---------------|-----------------|------------------|-----|---------|
-| | | | | | | | |
-
----
 
 ## Tổng hợp
 
-| Nhóm chức năng | Số TC | REQ phủ | Kỹ thuật IDM áp dụng |
-|----------------|-------|---------|----------------------|
-| | | | |
-| **Tổng** | **<!-- ≥ 20 -->** | | |
+
+| Nhóm chức năng        | Số lượng TC |
+| --------------------- | ----------- |
+| Đăng nhập             | 6           |
+| Quản lý Menu          | 2           |
+| Tìm kiếm/Lọc sản phẩm | 3           |
+| Tạo đơn hàng          | 3           |
+| Thanh toán            | 2           |
+| Kho nguyên liệu       | 1           |
+| Quản lý nhân viên     | 2           |
+| Báo cáo doanh thu     | 1           |
+| Tổng cộng             | 20          |
+
+## Phân loại Test Case
+
+| Loại kiểm thử | Số lượng |
+| ------------- | -------- |
+| Positive Test | 15       |
+| Negative Test | 5        |
+| Boundary Test | 0        |
+| Total         | 20       |
+
+## Coverage Requirement
+
+| Requirement                | Số TC |
+| -------------------------- | ----- |
+| REQ-01 Login               | 6     |
+| REQ-02 Menu Management     | 2     |
+| REQ-03 Search Product      | 3     |
+| REQ-04 Order Creation      | 3     |
+| REQ-05 Payment             | 2     |
+| REQ-06 Inventory           | 1     |
+| REQ-07 Employee Management | 2     |
+| REQ-08 Revenue Report      | 1     |
+
+## Điều kiện thực hiện kiểm thử
+
+* Ứng dụng Flutter chạy thành công.
+* Dữ liệu mẫu được khởi tạo từ source code.
+* Thiết bị kiểm thử có kết nối mạng nội bộ (nếu cần).
+* Người kiểm thử có quyền truy cập ứng dụng.
