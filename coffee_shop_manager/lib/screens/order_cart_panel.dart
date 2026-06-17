@@ -83,7 +83,7 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
             TextButton(
               onPressed: () => Navigator.pop(context),
               child: const Text('Đóng'),
-            )
+            ),
           ],
         ),
       );
@@ -97,118 +97,193 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
       builder: (context) {
         final size = MediaQuery.of(context).size;
         return Dialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
           child: Container(
             width: size.width > 450 ? 400 : size.width * 0.9,
             padding: const EdgeInsets.all(24),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                // Header
-                const Center(
-                  child: Text(
-                    'CÀ PHÊ ABC',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, letterSpacing: 1.5),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // Header
+                  const Center(
+                    child: Text(
+                      'CÀ PHÊ ABC',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.5,
+                      ),
+                    ),
                   ),
-                ),
-                const Center(
-                  child: Text(
-                    'Đ/C: 123 Đường Đại Học, Khu A',
-                    style: TextStyle(fontSize: 12, color: Colors.grey),
+                  const Center(
+                    child: Text(
+                      'Đ/C: 123 Đường Đại Học, Khu A',
+                      style: TextStyle(fontSize: 12, color: Colors.grey),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 12),
-                const Divider(thickness: 1, color: Colors.black54),
-                const SizedBox(height: 8),
+                  const SizedBox(height: 12),
+                  const Divider(thickness: 1, color: Colors.black54),
+                  const SizedBox(height: 8),
 
-                // Info Rows
-                _buildReceiptRow('Mã hóa đơn:', order.id),
-                _buildReceiptRow('Ngày tạo:', '${order.date.day}/${order.date.month}/${order.date.year} ${order.date.hour}:${order.date.minute.toString().padLeft(2, '0')}'),
-                _buildReceiptRow('Nhân viên:', order.createdByName),
-                _buildReceiptRow('Thanh toán:', order.paymentMethod),
-                _buildReceiptRow('Trạng thái:', order.status, isBoldValue: true),
+                  // Info Rows
+                  _buildReceiptRow('Mã hóa đơn:', order.id),
+                  _buildReceiptRow(
+                    'Ngày tạo:',
+                    '${order.date.day}/${order.date.month}/${order.date.year} ${order.date.hour}:${order.date.minute.toString().padLeft(2, '0')}',
+                  ),
+                  _buildReceiptRow('Nhân viên:', order.createdByName),
+                  _buildReceiptRow('Thanh toán:', order.paymentMethod),
+                  _buildReceiptRow(
+                    'Trạng thái:',
+                    order.status,
+                    isBoldValue: true,
+                  ),
 
-                const SizedBox(height: 12),
-                const Divider(thickness: 1, color: Colors.black54),
-                const SizedBox(height: 8),
+                  const SizedBox(height: 12),
+                  const Divider(thickness: 1, color: Colors.black54),
+                  const SizedBox(height: 8),
 
-                // Items Headers
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(flex: 5, child: Text('Tên món', style: TextStyle(fontWeight: FontWeight.bold))),
-                    Expanded(flex: 2, child: Text('SL', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center)),
-                    Expanded(flex: 3, child: Text('Thành tiền', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.right)),
-                  ],
-                ),
-                const SizedBox(height: 8),
+                  // Items Headers
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        flex: 5,
+                        child: Text(
+                          'Tên món',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Text(
+                          'SL',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: Text(
+                          'Thành tiền',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.right,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
 
-                // Items list
-                ...order.items.map((item) => Padding(
+                  // Items list
+                  ...order.items.map(
+                    (item) => Padding(
                       padding: const EdgeInsets.symmetric(vertical: 4.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(flex: 5, child: Text(item.drink.name)),
-                          Expanded(flex: 2, child: Text('${item.quantity}', textAlign: TextAlign.center)),
                           Expanded(
-                              flex: 3,
-                              child: Text(
-                                '${item.cost.toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')} đ',
-                                textAlign: TextAlign.right,
-                              )),
+                            flex: 2,
+                            child: Text(
+                              '${item.quantity}',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          Expanded(
+                            flex: 3,
+                            child: Text(
+                              '${item.cost.toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')} đ',
+                              textAlign: TextAlign.right,
+                            ),
+                          ),
                         ],
                       ),
-                    )),
-
-                const SizedBox(height: 12),
-                const Divider(thickness: 1, color: Colors.black54),
-                const SizedBox(height: 8),
-
-                // Totals
-                _buildReceiptRow('Tạm tính:', '${order.subtotal.toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')} đ'),
-                if (order.discount > 0)
-                  _buildReceiptRow('Giảm giá (${order.voucherCode}):', '-${order.discount.toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')} đ'),
-                const Divider(thickness: 1),
-                _buildReceiptRow('TỔNG TIỀN:', '${order.total.toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')} đ', isBoldTitle: true, isBoldValue: true, fontSize: 16),
-
-                const SizedBox(height: 24),
-                const Center(
-                  child: Text(
-                    'Cảm ơn Quý Khách - Hẹn gặp lại!',
-                    style: TextStyle(fontStyle: FontStyle.italic, color: Colors.grey),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 24),
 
-                ElevatedButton(
-                  key: const ValueKey('receipt_close_btn'),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF5D4037),
+                  const SizedBox(height: 12),
+                  const Divider(thickness: 1, color: Colors.black54),
+                  const SizedBox(height: 8),
+
+                  // Totals
+                  _buildReceiptRow(
+                    'Tạm tính:',
+                    '${order.subtotal.toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')} đ',
                   ),
-                  child: const Text('Đóng & In hóa đơn'),
-                ),
-              ],
+                  if (order.discount > 0)
+                    _buildReceiptRow(
+                      'Giảm giá (${order.voucherCode}):',
+                      '-${order.discount.toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')} đ',
+                    ),
+                  const Divider(thickness: 1),
+                  _buildReceiptRow(
+                    'TỔNG TIỀN:',
+                    '${order.total.toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')} đ',
+                    isBoldTitle: true,
+                    isBoldValue: true,
+                    fontSize: 16,
+                  ),
+
+                  const SizedBox(height: 24),
+                  const Center(
+                    child: Text(
+                      'Cảm ơn Quý Khách - Hẹn gặp lại!',
+                      style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+
+                  ElevatedButton(
+                    key: const ValueKey('receipt_close_btn'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF5D4037),
+                    ),
+                    child: const Text('Đóng & In hóa đơn'),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      );
-    },
-  );
-}
+        );
+      },
+    );
+  }
 
-  Widget _buildReceiptRow(String title, String value, {bool isBoldTitle = false, bool isBoldValue = false, double fontSize = 13}) {
+  Widget _buildReceiptRow(
+    String title,
+    String value, {
+    bool isBoldTitle = false,
+    bool isBoldValue = false,
+    double fontSize = 13,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title, style: TextStyle(fontWeight: isBoldTitle ? FontWeight.bold : FontWeight.normal, fontSize: fontSize)),
-          Text(value, style: TextStyle(fontWeight: isBoldValue ? FontWeight.bold : FontWeight.normal, fontSize: fontSize)),
+          Text(
+            title,
+            style: TextStyle(
+              fontWeight: isBoldTitle ? FontWeight.bold : FontWeight.normal,
+              fontSize: fontSize,
+            ),
+          ),
+          Text(
+            value,
+            style: TextStyle(
+              fontWeight: isBoldValue ? FontWeight.bold : FontWeight.normal,
+              fontSize: fontSize,
+            ),
+          ),
         ],
       ),
     );
@@ -257,13 +332,20 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                 const SizedBox(width: 8),
                 const Text(
                   'Đơn hàng hiện tại',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF3E2723)),
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF3E2723),
+                  ),
                 ),
                 const Spacer(),
                 if (cartItems.isNotEmpty)
                   TextButton(
                     onPressed: () => appState.clearCart(),
-                    child: const Text('Xóa hết', style: TextStyle(color: Colors.red, fontSize: 13)),
+                    child: const Text(
+                      'Xóa hết',
+                      style: TextStyle(color: Colors.red, fontSize: 13),
+                    ),
                   ),
               ],
             ),
@@ -276,7 +358,11 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.shopping_cart_outlined, size: 64, color: Colors.grey.shade300),
+                        Icon(
+                          Icons.shopping_cart_outlined,
+                          size: 64,
+                          color: Colors.grey.shade300,
+                        ),
                         const SizedBox(height: 16),
                         const Text(
                           'Chưa có món nào được chọn',
@@ -291,12 +377,19 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                       final item = cartItems[index];
                       final drinkName = item.key;
                       final quantity = item.value;
-                      final drink = appState.drinks.firstWhere((e) => e.name == drinkName);
+                      final drink = appState.drinks.firstWhere(
+                        (e) => e.name == drinkName,
+                      );
 
                       return Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
                         decoration: const BoxDecoration(
-                          border: Border(bottom: BorderSide(color: Color(0xFFFAF5EF))),
+                          border: Border(
+                            bottom: BorderSide(color: Color(0xFFFAF5EF)),
+                          ),
                         ),
                         child: Row(
                           children: [
@@ -309,28 +402,58 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                               child: Row(
                                 children: [
                                   IconButton(
-                                    constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                                    constraints: const BoxConstraints(
+                                      minWidth: 32,
+                                      minHeight: 32,
+                                    ),
                                     padding: EdgeInsets.zero,
-                                    icon: const Icon(Icons.remove, size: 16, color: Color(0xFF5D4037)),
+                                    icon: const Icon(
+                                      Icons.remove,
+                                      size: 16,
+                                      color: Color(0xFF5D4037),
+                                    ),
                                     onPressed: () {
-                                      appState.updateCartQuantity(drinkName, quantity - 1);
+                                      appState.updateCartQuantity(
+                                        drinkName,
+                                        quantity - 1,
+                                      );
                                     },
                                   ),
                                   Text(
                                     '$quantity',
-                                    style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF5D4037)),
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF5D4037),
+                                    ),
                                   ),
                                   IconButton(
-                                    constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                                    constraints: const BoxConstraints(
+                                      minWidth: 32,
+                                      minHeight: 32,
+                                    ),
                                     padding: EdgeInsets.zero,
-                                    icon: const Icon(Icons.add, size: 16, color: Color(0xFF5D4037)),
+                                    icon: const Icon(
+                                      Icons.add,
+                                      size: 16,
+                                      color: Color(0xFF5D4037),
+                                    ),
                                     onPressed: () {
-                                      if (appState.canAddDrink(drink, quantityToAdd: 1)) {
-                                        appState.updateCartQuantity(drinkName, quantity + 1);
+                                      if (appState.canAddDrink(
+                                        drink,
+                                        quantityToAdd: 1,
+                                      )) {
+                                        appState.updateCartQuantity(
+                                          drinkName,
+                                          quantity + 1,
+                                        );
                                       } else {
-                                        ScaffoldMessenger.of(context).showSnackBar(
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).showSnackBar(
                                           const SnackBar(
-                                            content: Text('Không đủ nguyên liệu trong kho hoặc vượt quá giới hạn 10 món!'),
+                                            content: Text(
+                                              'Không đủ nguyên liệu trong kho hoặc vượt quá giới hạn 10 món!',
+                                            ),
                                             backgroundColor: Colors.amber,
                                           ),
                                         );
@@ -349,11 +472,17 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                                 children: [
                                   Text(
                                     drinkName,
-                                    style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF3E2723)),
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF3E2723),
+                                    ),
                                   ),
                                   Text(
                                     '${drink.cost.toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')}đ',
-                                    style: const TextStyle(color: Colors.grey, fontSize: 12),
+                                    style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 12,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -362,7 +491,10 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                             // Total item price
                             Text(
                               '${(drink.cost * quantity).toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')}đ',
-                              style: const TextStyle(fontWeight: FontWeight.w600, color: Color(0xFF5D4037)),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF5D4037),
+                              ),
                             ),
                           ],
                         ),
@@ -390,8 +522,13 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                           decoration: InputDecoration(
                             hintText: 'Nhập voucher',
                             fillColor: Colors.white,
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                            errorText: _voucherError.isNotEmpty ? _voucherError : null,
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 8,
+                            ),
+                            errorText: _voucherError.isNotEmpty
+                                ? _voucherError
+                                : null,
                           ),
                         ),
                       ),
@@ -404,7 +541,10 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                         backgroundColor: const Color(0xFF8D6E63),
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                       ),
-                      child: const Text('Áp dụng', style: TextStyle(fontSize: 11)),
+                      child: const Text(
+                        'Áp dụng',
+                        style: TextStyle(fontSize: 11),
+                      ),
                     ),
                   ],
                 ),
@@ -413,13 +553,19 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                 // Payment Method
                 const Text(
                   'Phương thức thanh toán:',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Color(0xFF5D4037)),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13,
+                    color: Color(0xFF5D4037),
+                  ),
                 ),
                 const SizedBox(height: 6),
                 Wrap(
                   spacing: 6,
                   runSpacing: 6,
-                  children: ['Tiền mặt', 'Chuyển khoản', 'Ví điện tử'].map((method) {
+                  children: ['Tiền mặt', 'Chuyển khoản', 'Ví điện tử'].map((
+                    method,
+                  ) {
                     final isSelected = _paymentMethod == method;
                     return InkWell(
                       key: ValueKey('pay_method_$method'),
@@ -429,9 +575,14 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                         });
                       },
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 6,
+                        ),
                         decoration: BoxDecoration(
-                          color: isSelected ? const Color(0xFF5D4037) : Colors.white,
+                          color: isSelected
+                              ? const Color(0xFF5D4037)
+                              : Colors.white,
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(color: const Color(0xFFEFE6DD)),
                         ),
@@ -440,7 +591,9 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                           style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.bold,
-                            color: isSelected ? Colors.white : const Color(0xFF5D4037),
+                            color: isSelected
+                                ? Colors.white
+                                : const Color(0xFF5D4037),
                           ),
                         ),
                       ),
@@ -450,11 +603,23 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                 const SizedBox(height: 16),
 
                 // Cost Breakdown
-                _buildReceiptRow('Tạm tính:', '${subtotal.toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')} đ'),
+                _buildReceiptRow(
+                  'Tạm tính:',
+                  '${subtotal.toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')} đ',
+                ),
                 if (discount > 0)
-                  _buildReceiptRow('Khuyến mãi (${_appliedVoucher}):', '-${discount.toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')} đ'),
+                  _buildReceiptRow(
+                    'Khuyến mãi (${_appliedVoucher}):',
+                    '-${discount.toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')} đ',
+                  ),
                 const Divider(),
-                _buildReceiptRow('TỔNG THANH TOÁN:', '${total.toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')} đ', isBoldTitle: true, isBoldValue: true, fontSize: 15),
+                _buildReceiptRow(
+                  'TỔNG THANH TOÁN:',
+                  '${total.toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')} đ',
+                  isBoldTitle: true,
+                  isBoldValue: true,
+                  fontSize: 15,
+                ),
                 const SizedBox(height: 16),
 
                 // Checkout buttons
@@ -463,22 +628,38 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                   children: [
                     ElevatedButton(
                       key: const ValueKey('checkout_paid_btn'),
-                      onPressed: cartItems.isEmpty ? null : () => _handleCheckout('Đã thanh toán'),
+                      onPressed: cartItems.isEmpty
+                          ? null
+                          : () => _handleCheckout('Đã thanh toán'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF5D4037),
                         padding: const EdgeInsets.symmetric(vertical: 12),
                       ),
-                      child: const Text('Thanh Toán (Đã thanh toán)', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                      child: const Text(
+                        'Thanh Toán (Đã thanh toán)',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 8),
                     OutlinedButton(
                       key: const ValueKey('checkout_unpaid_btn'),
-                      onPressed: cartItems.isEmpty ? null : () => _handleCheckout('Chưa thanh toán'),
+                      onPressed: cartItems.isEmpty
+                          ? null
+                          : () => _handleCheckout('Chưa thanh toán'),
                       style: OutlinedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         side: const BorderSide(color: Color(0xFF8D6E63)),
                       ),
-                      child: const Text('Ghi Nợ (Chưa thanh toán)', style: TextStyle(fontSize: 12, color: Color(0xFF8D6E63))),
+                      child: const Text(
+                        'Ghi Nợ (Chưa thanh toán)',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Color(0xFF8D6E63),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -513,9 +694,16 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.history, size: 64, color: Colors.grey.shade300),
+                          Icon(
+                            Icons.history,
+                            size: 64,
+                            color: Colors.grey.shade300,
+                          ),
                           const SizedBox(height: 16),
-                          const Text('Chưa có đơn hàng nào được tạo', style: TextStyle(color: Colors.grey)),
+                          const Text(
+                            'Chưa có đơn hàng nào được tạo',
+                            style: TextStyle(color: Colors.grey),
+                          ),
                         ],
                       ),
                     )
@@ -529,20 +717,34 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                           children: [
                             Text(
                               'Mã: ${order.id}',
-                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
                             ),
                             const SizedBox(width: 12),
                             Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 4,
+                              ),
                               decoration: BoxDecoration(
-                                color: isUnpaid ? Colors.orange.shade50 : Colors.green.shade50,
+                                color: isUnpaid
+                                    ? Colors.orange.shade50
+                                    : Colors.green.shade50,
                                 borderRadius: BorderRadius.circular(4),
-                                border: Border.all(color: isUnpaid ? Colors.orange : Colors.green),
+                                border: Border.all(
+                                  color: isUnpaid
+                                      ? Colors.orange
+                                      : Colors.green,
+                                ),
                               ),
                               child: Text(
                                 order.status,
                                 style: TextStyle(
-                                  color: isUnpaid ? Colors.orange.shade800 : Colors.green.shade800,
+                                  color: isUnpaid
+                                      ? Colors.orange.shade800
+                                      : Colors.green.shade800,
                                   fontSize: 11,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -556,33 +758,53 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                           children: [
                             Text(
                               'Món đã gọi: ${order.items.map((e) => "${e.drink.name} x${e.quantity}").join(", ")}',
-                              style: TextStyle(fontSize: 13, color: Colors.grey.shade700),
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: Colors.grey.shade700,
+                              ),
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
                             const SizedBox(height: 6),
                             Text(
                               'Ngày: ${order.date.day}/${order.date.month}/${order.date.year} ${order.date.hour}:${order.date.minute.toString().padLeft(2, '0')} | Người tạo: ${order.createdByName}',
-                              style: const TextStyle(fontSize: 11, color: Colors.grey),
+                              style: const TextStyle(
+                                fontSize: 11,
+                                color: Colors.grey,
+                              ),
                             ),
                           ],
                         );
 
                         final priceText = Text(
                           '${order.total.toString().replaceAllMapped(RegExp(r'(\d{3})(?=\d)'), (Match m) => '${m[1]}.')} đ',
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF5D4037)),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Color(0xFF5D4037),
+                          ),
                         );
 
                         final actionButtons = Row(
-                          mainAxisAlignment: isMobile ? MainAxisAlignment.end : MainAxisAlignment.start,
+                          mainAxisAlignment: isMobile
+                              ? MainAxisAlignment.end
+                              : MainAxisAlignment.start,
                           children: [
                             // View Receipt
                             TextButton.icon(
                               key: ValueKey('view_receipt_btn_${order.id}'),
                               onPressed: () => _showInvoiceDialog(order),
-                              icon: const Icon(Icons.receipt_outlined, size: 14),
-                              label: const Text('Hóa đơn', style: TextStyle(fontSize: 12)),
-                              style: TextButton.styleFrom(foregroundColor: const Color(0xFF8D6E63)),
+                              icon: const Icon(
+                                Icons.receipt_outlined,
+                                size: 14,
+                              ),
+                              label: const Text(
+                                'Hóa đơn',
+                                style: TextStyle(fontSize: 12),
+                              ),
+                              style: TextButton.styleFrom(
+                                foregroundColor: const Color(0xFF8D6E63),
+                              ),
                             ),
 
                             // Pay button (if unpaid)
@@ -594,17 +816,30 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                                   appState.payOrder(order.id);
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
-                                      content: Text('Đã ghi nhận thanh toán cho đơn ${order.id}'),
+                                      content: Text(
+                                        'Đã ghi nhận thanh toán cho đơn ${order.id}',
+                                      ),
                                       backgroundColor: Colors.green,
                                     ),
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.green,
-                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 12,
+                                    vertical: 8,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(6),
+                                  ),
                                 ),
-                                child: const Text('Thanh toán', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
+                                child: const Text(
+                                  'Thanh toán',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
                             ],
                           ],
@@ -616,14 +851,13 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                             padding: const EdgeInsets.all(16.0),
                             child: isMobile
                                 ? Column(
-                                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
                                     children: [
                                       Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          orderHeader,
-                                          priceText,
-                                        ],
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [orderHeader, priceText],
                                       ),
                                       const SizedBox(height: 12),
                                       orderDetails,
@@ -636,7 +870,8 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                                       // Left details
                                       Expanded(
                                         child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             orderHeader,
                                             const SizedBox(height: 8),
@@ -647,7 +882,8 @@ class _OrderCartPanelState extends State<OrderCartPanel> {
                                       const SizedBox(width: 16),
                                       // Right price and action buttons
                                       Column(
-                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
                                         children: [
                                           priceText,
                                           const SizedBox(height: 8),

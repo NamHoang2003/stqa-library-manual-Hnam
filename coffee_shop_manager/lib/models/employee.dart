@@ -1,20 +1,19 @@
 class Employee {
-  final String id;
-  final String name;
-  final String email;
-  final String phone;
-  final String role; // 'Manager' or 'Staff'
-  final String status; // 'Đang làm' or 'Nghỉ việc'
+  String id;
+  String name;
+  String email;
+  String? phone;
+  String? role;
+  String status; // 'Đang làm' hoặc 'Nghỉ việc
 
   Employee({
     required this.id,
     required this.name,
     required this.email,
-    required this.phone,
-    required this.role,
+    this.phone,
+    this.role,
     required this.status,
   });
-
   Employee copyWith({
     String? id,
     String? name,

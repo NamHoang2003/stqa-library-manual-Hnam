@@ -32,7 +32,9 @@ class _InventoryScreenState extends State<InventoryScreen> {
             TextField(
               key: const ValueKey('dialog_stock_field'),
               controller: _editQuantityController,
-              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              keyboardType: const TextInputType.numberWithOptions(
+                decimal: true,
+              ),
               decoration: InputDecoration(
                 labelText: 'Số lượng mới',
                 suffixText: ing.unit,
@@ -45,7 +47,8 @@ class _InventoryScreenState extends State<InventoryScreen> {
               children: [50, 100, 500].map((amount) {
                 return OutlinedButton(
                   onPressed: () {
-                    final curr = double.tryParse(_editQuantityController.text) ?? 0.0;
+                    final curr =
+                        double.tryParse(_editQuantityController.text) ?? 0.0;
                     setState(() {
                       _editQuantityController.text = (curr + amount).toString();
                     });
@@ -77,13 +80,18 @@ class _InventoryScreenState extends State<InventoryScreen> {
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text('Vui lòng nhập số lượng hợp lệ (không được âm)!'),
+                    content: Text(
+                      'Vui lòng nhập số lượng hợp lệ (không được âm)!',
+                    ),
                     backgroundColor: Colors.red,
                   ),
                 );
               }
             },
-            child: const Text('Cập nhật', style: TextStyle(color: Color(0xFF5D4037))),
+            child: const Text(
+              'Cập nhật',
+              style: TextStyle(color: Color(0xFF5D4037)),
+            ),
           ),
         ],
       ),
@@ -100,7 +108,9 @@ class _InventoryScreenState extends State<InventoryScreen> {
         final ingredients = appState.ingredients;
 
         // Check if any ingredient is in warning threshold (< 10)
-        final lowStockIngredients = ingredients.where((element) => element.quantity < 10).toList();
+        final lowStockIngredients = ingredients
+            .where((element) => element.quantity < 10)
+            .toList();
 
         return Scaffold(
           backgroundColor: const Color(0xFFFBF8F6),
@@ -109,120 +119,188 @@ class _InventoryScreenState extends State<InventoryScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-            Text(
-              'Kho Nguyên Liệu',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const SizedBox(height: 8),
-            const Text(
-              'Quản lý nguyên liệu pha chế & theo dõi mức độ tồn kho an toàn',
-              style: TextStyle(color: Colors.grey, fontSize: 13),
-            ),
-            const SizedBox(height: 20),
-
-            // Low Stock Warning Banner
-            if (lowStockIngredients.isNotEmpty)
-              Container(
-                margin: const EdgeInsets.only(bottom: 20),
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.red.shade50,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.red.shade200),
+                Text(
+                  'Kho Nguyên Liệu',
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
-                child: Row(
-                  children: [
-                    Icon(Icons.warning, color: Colors.red.shade800),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'CẢNH BÁO HẾT NGUYÊN LIỆU (Tồn kho < 10)',
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red.shade900, fontSize: 13),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            'Các nguyên liệu sắp hết: ${lowStockIngredients.map((e) => "${e.name} (${e.quantity} ${e.unit})").join(", ")}',
-                            style: TextStyle(color: Colors.red.shade800, fontSize: 12),
-                          ),
-                        ],
-                      ),
+                const SizedBox(height: 8),
+                const Text(
+                  'Quản lý nguyên liệu pha chế & theo dõi mức độ tồn kho an toàn',
+                  style: TextStyle(color: Colors.grey, fontSize: 13),
+                ),
+                const SizedBox(height: 20),
+
+                // Low Stock Warning Banner
+                if (lowStockIngredients.isNotEmpty)
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 20),
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.red.shade50,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: Colors.red.shade200),
                     ),
-                  ],
-                ),
-              ),
-
-            // Ingredients List Card
-            Expanded(
-              child: Card(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: DataTable(
-                        columns: const [
-                          DataColumn(label: Text('Tên Nguyên Liệu', style: TextStyle(fontWeight: FontWeight.bold))),
-                          DataColumn(label: Text('Số Lượng Hiện Tại', style: TextStyle(fontWeight: FontWeight.bold))),
-                          DataColumn(label: Text('Đơn Vị', style: TextStyle(fontWeight: FontWeight.bold))),
-                          DataColumn(label: Text('Tình Trạng', style: TextStyle(fontWeight: FontWeight.bold))),
-                          DataColumn(label: Text('Thao Tác', style: TextStyle(fontWeight: FontWeight.bold))),
-                        ],
-                        rows: ingredients.map((ing) {
-                          final isLow = ing.quantity < 10;
-                          return DataRow(
-                            cells: [
-                              DataCell(Text(ing.name, style: const TextStyle(fontWeight: FontWeight.w600))),
-                              DataCell(Text('${ing.quantity}')),
-                              DataCell(Text(ing.unit)),
-                              DataCell(
-                                Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                  decoration: BoxDecoration(
-                                    color: isLow ? Colors.red.shade50 : Colors.green.shade50,
-                                    borderRadius: BorderRadius.circular(4),
-                                    border: Border.all(color: isLow ? Colors.red : Colors.green),
-                                  ),
-                                  child: Text(
-                                    isLow ? 'Sắp Hết' : 'An Toàn',
-                                    style: TextStyle(
-                                      color: isLow ? Colors.red.shade800 : Colors.green.shade800,
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.warning, color: Colors.red.shade800),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'CẢNH BÁO HẾT NGUYÊN LIỆU (Tồn kho < 10)',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red.shade900,
+                                  fontSize: 13,
                                 ),
                               ),
-                              DataCell(
-                                ElevatedButton.icon(
-                                  key: ValueKey('adjust_stock_btn_${ing.name}'),
-                                  onPressed: () => _showAdjustStockDialog(ing),
-                                  icon: const Icon(Icons.edit_note, size: 16),
-                                  label: const Text('Nhập Kho', style: TextStyle(fontSize: 11)),
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: const Color(0xFF5D4037),
-                                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-                                  ),
+                              const SizedBox(height: 4),
+                              Text(
+                                'Các nguyên liệu sắp hết: ${lowStockIngredients.map((e) => "${e.name} (${e.quantity} ${e.unit})").join(", ")}',
+                                style: TextStyle(
+                                  color: Colors.red.shade800,
+                                  fontSize: 12,
                                 ),
                               ),
                             ],
-                          );
-                        }).toList(),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                // Ingredients List Card
+                Expanded(
+                  child: Card(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: DataTable(
+                            columns: const [
+                              DataColumn(
+                                label: Text(
+                                  'Tên Nguyên Liệu',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              DataColumn(
+                                label: Text(
+                                  'Số Lượng Hiện Tại',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              DataColumn(
+                                label: Text(
+                                  'Đơn Vị',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              DataColumn(
+                                label: Text(
+                                  'Tình Trạng',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              DataColumn(
+                                label: Text(
+                                  'Thao Tác',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
+                            rows: ingredients.map((ing) {
+                              final isLow = ing.quantity < 10;
+                              return DataRow(
+                                cells: [
+                                  DataCell(
+                                    Text(
+                                      ing.name,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                  DataCell(Text('${ing.quantity}')),
+                                  DataCell(Text(ing.unit)),
+                                  DataCell(
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 8,
+                                        vertical: 4,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: isLow
+                                            ? Colors.red.shade50
+                                            : Colors.green.shade50,
+                                        borderRadius: BorderRadius.circular(4),
+                                        border: Border.all(
+                                          color: isLow
+                                              ? Colors.red
+                                              : Colors.green,
+                                        ),
+                                      ),
+                                      child: Text(
+                                        isLow ? 'Sắp Hết' : 'An Toàn',
+                                        style: TextStyle(
+                                          color: isLow
+                                              ? Colors.red.shade800
+                                              : Colors.green.shade800,
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  DataCell(
+                                    ElevatedButton.icon(
+                                      key: ValueKey(
+                                        'adjust_stock_btn_${ing.name}',
+                                      ),
+                                      onPressed: () =>
+                                          _showAdjustStockDialog(ing),
+                                      icon: const Icon(
+                                        Icons.edit_note,
+                                        size: 16,
+                                      ),
+                                      label: const Text(
+                                        'Nhập Kho',
+                                        style: TextStyle(fontSize: 11),
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: const Color(
+                                          0xFF5D4037,
+                                        ),
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 12,
+                                          vertical: 8,
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            6,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            }).toList(),
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
-  },
-);
   }
 }

@@ -6,91 +6,69 @@
 
 | Thông tin | |
 |---|---|
-| **Nhóm** | `<!-- Tên nhóm -->` |
-| **Ngày báo cáo** | `<!-- DD/MM/YYYY -->` |
+| **Nhóm** | `Nhóm 2` |
+| **Ngày báo cáo** | `28/5/2026` |
 
 ---
 
+
 ## BUG-01
 
-| Thuộc tính | Chi tiết |
-|-----------|---------|
-| **Mã lỗi** | BUG-01 |
-| **TC liên quan** | `<!-- TC-xx -->` |
-| **REQ liên quan** | `<!-- REQ-xx -->` |
-| **Mức độ** | `<!-- High / Medium / Low -->` |
-| **Người phát hiện** | `<!-- Họ tên thành viên -->` |
-| **Ngày phát hiện** | `<!-- DD/MM/YYYY -->` |
-| **Trạng thái** | `<!-- Open / Closed -->` |
+| Thuộc tính    | Chi tiết |
+| ------------- | -------- |
+| Mã lỗi        | BUG-01   |
+| TC liên quan  | TC-01    |
+| REQ liên quan | REQ-01   |
+| Mức độ        | Medium   |
+| Trạng thái    | Open     |
 
 **Tiêu đề:**
-`<!-- Mô tả hành vi lỗi cụ thể -->`
-
-**Môi trường:**
-- Trình duyệt: Chrome `<!-- version -->`
-- Hệ điều hành: `<!-- OS -->`
-- Ngôn ngữ giao diện: Tiếng Việt
+Không đăng nhập được bằng tài khoản Manager được công bố trong SRS (`manager@abc.com`)
 
 **Điều kiện tiên quyết:**
-`<!-- VD: Trang đăng nhập đã mở, dữ liệu đã reset -->`
+Mở màn hình đăng nhập.
 
 **Bước tái hiện:**
-1. `<!-- Bước 1 -->`
-2. `<!-- Bước 2 -->`
-3. `<!-- Bước 3 -->`
+
+1. Nhập email `manager@abc.com`
+2. Nhập mật khẩu `admin123`
+3. Nhấn Đăng nhập
 
 **Kết quả mong đợi:**
-`<!-- Kết quả đúng theo SRS -->`
+Đăng nhập thành công theo SRS.
 
 **Kết quả thực tế:**
-`<!-- Kết quả hệ thống thật sự trả về -->`
+Hệ thống báo "Không tìm thấy tài khoản".
 
 **Tác động:**
-`<!-- VD: Vi phạm quy tắc nghiệp vụ cốt lõi, cho phép mượn vượt giới hạn -->`
-
-**Minh chứng:**
-`<!-- Đính kèm ảnh chụp màn hình nếu có -->`
-
-**Đề xuất xử lý:**
-`<!-- Gợi ý cách sửa lỗi nếu có -->` 
+Người kiểm thử không thể sử dụng tài khoản mẫu trong tài liệu SRS.
 
 ---
 
 ## BUG-02
 
-| Thuộc tính | Chi tiết |
-|-----------|---------|
-| **Mã lỗi** | BUG-02 |
-| **TC liên quan** | `<!-- TC-xx -->` |
-| **REQ liên quan** | `<!-- REQ-xx -->` |
-| **Mức độ** | `<!-- High / Medium / Low -->` |
-| **Người phát hiện** | `<!-- Họ tên thành viên -->` |
-| **Ngày phát hiện** | `<!-- DD/MM/YYYY -->` |
-| **Trạng thái** | `<!-- Open / Closed -->` |
+| Thuộc tính    | Chi tiết |
+| ------------- | -------- |
+| Mã lỗi        | BUG-02   |
+| TC liên quan  | TC-18    |
+| REQ liên quan | REQ-07   |
+| Mức độ        | Low      |
+| Trạng thái    | Open     |
 
 **Tiêu đề:**
-`<!-- Mô tả hành vi lỗi -->`
+Thông tin nhân viên EMP004 không khớp với dữ liệu mô tả trong SRS
 
 **Bước tái hiện:**
-1. `<!-- -->`
-2. `<!-- -->`
-3. `<!-- -->`
+
+1. Đăng nhập bằng tài khoản Manager
+2. Mở màn hình Quản lý nhân viên
+3. Kiểm tra nhân viên EMP004
 
 **Kết quả mong đợi:**
-`<!-- -->`
+Theo SRS trạng thái là "Đang làm".
 
 **Kết quả thực tế:**
-`<!-- -->`
+Trong code trạng thái là "Nghỉ việc".
 
 **Tác động:**
-`<!-- -->`
-
-**Minh chứng:**
-`<!-- -->`
-
-**Đề xuất xử lý:**
-`<!-- -->`
-
----
-
-<!-- Copy template BUG trên để thêm BUG-03, BUG-04, ... cho mỗi TC Fail -->
+Gây sai lệch dữ liệu kiểm thử và tài liệu đặc tả.

@@ -49,7 +49,9 @@ class _StaffScreenState extends State<StaffScreen> {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
           title: const Row(
             children: [
               Icon(Icons.warning, color: Colors.orange),
@@ -73,8 +75,8 @@ class _StaffScreenState extends State<StaffScreen> {
     setState(() {
       _editingEmployee = emp;
       _editNameController.text = emp.name;
-      _editPhoneController.text = emp.phone;
-      _editRole = emp.role;
+      _editPhoneController.text = emp.phone!;
+      _editRole = emp.role!;
       _editStatus = emp.status;
     });
 
@@ -84,7 +86,9 @@ class _StaffScreenState extends State<StaffScreen> {
         return StatefulBuilder(
           builder: (context, setDialogState) {
             return AlertDialog(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
               title: Text('Chỉnh sửa: ${emp.id}'),
               content: SingleChildScrollView(
                 child: Column(
@@ -92,12 +96,16 @@ class _StaffScreenState extends State<StaffScreen> {
                   children: [
                     TextField(
                       controller: _editNameController,
-                      decoration: const InputDecoration(labelText: 'Họ tên nhân viên'),
+                      decoration: const InputDecoration(
+                        labelText: 'Họ tên nhân viên',
+                      ),
                     ),
                     const SizedBox(height: 12),
                     TextField(
                       controller: _editPhoneController,
-                      decoration: const InputDecoration(labelText: 'Số điện thoại'),
+                      decoration: const InputDecoration(
+                        labelText: 'Số điện thoại',
+                      ),
                     ),
                     const SizedBox(height: 12),
                     DropdownButtonFormField<String>(
@@ -105,8 +113,14 @@ class _StaffScreenState extends State<StaffScreen> {
                       value: _editRole,
                       decoration: const InputDecoration(labelText: 'Vai trò'),
                       items: const [
-                        DropdownMenuItem(value: 'Manager', child: Text('Quản lý (Manager)')),
-                        DropdownMenuItem(value: 'Staff', child: Text('Nhân viên (Staff)')),
+                        DropdownMenuItem(
+                          value: 'Manager',
+                          child: Text('Quản lý (Manager)'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'Staff',
+                          child: Text('Nhân viên (Staff)'),
+                        ),
                       ],
                       onChanged: (val) {
                         if (val != null) {
@@ -120,10 +134,18 @@ class _StaffScreenState extends State<StaffScreen> {
                     DropdownButtonFormField<String>(
                       isExpanded: true,
                       value: _editStatus,
-                      decoration: const InputDecoration(labelText: 'Trạng thái'),
+                      decoration: const InputDecoration(
+                        labelText: 'Trạng thái',
+                      ),
                       items: const [
-                        DropdownMenuItem(value: 'Đang làm', child: Text('Đang làm (Active)')),
-                        DropdownMenuItem(value: 'Nghỉ việc', child: Text('Nghỉ việc (Inactive)')),
+                        DropdownMenuItem(
+                          value: 'Đang làm',
+                          child: Text('Đang làm (Active)'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'Nghỉ việc',
+                          child: Text('Nghỉ việc (Inactive)'),
+                        ),
                       ],
                       onChanged: (val) {
                         if (val != null) {
@@ -139,7 +161,10 @@ class _StaffScreenState extends State<StaffScreen> {
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Text('Hủy', style: TextStyle(color: Colors.grey)),
+                  child: const Text(
+                    'Hủy',
+                    style: TextStyle(color: Colors.grey),
+                  ),
                 ),
                 TextButton(
                   key: const ValueKey('dialog_save_btn'),
@@ -154,12 +179,17 @@ class _StaffScreenState extends State<StaffScreen> {
                     Navigator.pop(context);
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
-                        content: Text('Cập nhật thông tin nhân viên thành công!'),
+                        content: Text(
+                          'Cập nhật thông tin nhân viên thành công!',
+                        ),
                         backgroundColor: Colors.green,
                       ),
                     );
                   },
-                  child: const Text('Lưu thay đổi', style: TextStyle(color: Color(0xFF5D4037))),
+                  child: const Text(
+                    'Lưu thay đổi',
+                    style: TextStyle(color: Color(0xFF5D4037)),
+                  ),
                 ),
               ],
             );
@@ -185,7 +215,9 @@ class _StaffScreenState extends State<StaffScreen> {
         const SizedBox(height: 24),
         Card(
           child: Padding(
-            padding: EdgeInsets.all(MediaQuery.of(context).size.width > 900 ? 20.0 : 12.0),
+            padding: EdgeInsets.all(
+              MediaQuery.of(context).size.width > 900 ? 20.0 : 12.0,
+            ),
             child: Form(
               key: _formKey,
               child: Column(
@@ -252,8 +284,14 @@ class _StaffScreenState extends State<StaffScreen> {
                       prefixIcon: Icon(Icons.shield_outlined),
                     ),
                     items: const [
-                      DropdownMenuItem(value: 'Manager', child: Text('Quản lý (Manager)')),
-                      DropdownMenuItem(value: 'Staff', child: Text('Nhân viên (Staff)')),
+                      DropdownMenuItem(
+                        value: 'Manager',
+                        child: Text('Quản lý (Manager)'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'Staff',
+                        child: Text('Nhân viên (Staff)'),
+                      ),
                     ],
                     onChanged: (val) {
                       if (val != null) {
@@ -267,7 +305,10 @@ class _StaffScreenState extends State<StaffScreen> {
                   ElevatedButton(
                     key: const ValueKey('staff_submit_btn'),
                     onPressed: _handleAddEmployee,
-                    child: const Text('THÊM MỚI', style: TextStyle(fontWeight: FontWeight.bold)),
+                    child: const Text(
+                      'THÊM MỚI',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ],
               ),
@@ -278,22 +319,48 @@ class _StaffScreenState extends State<StaffScreen> {
     );
   }
 
-  Widget _buildListSection(List<Employee> employees, {required bool isScrollable}) {
+  Widget _buildListSection(
+    List<Employee> employees, {
+    required bool isScrollable,
+  }) {
     final tableWidget = DataTable(
       columns: const [
-        DataColumn(label: Text('Mã NV', style: TextStyle(fontWeight: FontWeight.bold))),
-        DataColumn(label: Text('Họ tên', style: TextStyle(fontWeight: FontWeight.bold))),
-        DataColumn(label: Text('Email', style: TextStyle(fontWeight: FontWeight.bold))),
-        DataColumn(label: Text('Vai trò', style: TextStyle(fontWeight: FontWeight.bold))),
-        DataColumn(label: Text('Trạng thái', style: TextStyle(fontWeight: FontWeight.bold))),
-        DataColumn(label: Text('Hành động', style: TextStyle(fontWeight: FontWeight.bold))),
+        DataColumn(
+          label: Text('Mã NV', style: TextStyle(fontWeight: FontWeight.bold)),
+        ),
+        DataColumn(
+          label: Text('Họ tên', style: TextStyle(fontWeight: FontWeight.bold)),
+        ),
+        DataColumn(
+          label: Text('Email', style: TextStyle(fontWeight: FontWeight.bold)),
+        ),
+        DataColumn(
+          label: Text('Vai trò', style: TextStyle(fontWeight: FontWeight.bold)),
+        ),
+        DataColumn(
+          label: Text(
+            'Trạng thái',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+        DataColumn(
+          label: Text(
+            'Hành động',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
       ],
       rows: employees.map((emp) {
         final isActive = emp.status == 'Đang làm';
         return DataRow(
           cells: [
             DataCell(Text(emp.id)),
-            DataCell(Text(emp.name, style: const TextStyle(fontWeight: FontWeight.w600))),
+            DataCell(
+              Text(
+                emp.name,
+                style: const TextStyle(fontWeight: FontWeight.w600),
+              ),
+            ),
             DataCell(Text(emp.email)),
             DataCell(Text(emp.role == 'Manager' ? 'Quản lý' : 'Nhân viên')),
             DataCell(
@@ -302,12 +369,16 @@ class _StaffScreenState extends State<StaffScreen> {
                 decoration: BoxDecoration(
                   color: isActive ? Colors.green.shade50 : Colors.red.shade50,
                   borderRadius: BorderRadius.circular(4),
-                  border: Border.all(color: isActive ? Colors.green : Colors.red),
+                  border: Border.all(
+                    color: isActive ? Colors.green : Colors.red,
+                  ),
                 ),
                 child: Text(
                   emp.status,
                   style: TextStyle(
-                    color: isActive ? Colors.green.shade800 : Colors.red.shade800,
+                    color: isActive
+                        ? Colors.green.shade800
+                        : Colors.red.shade800,
                     fontSize: 11,
                     fontWeight: FontWeight.bold,
                   ),
@@ -345,7 +416,9 @@ class _StaffScreenState extends State<StaffScreen> {
                               context: context,
                               builder: (context) => AlertDialog(
                                 title: const Text('Xác nhận xóa'),
-                                content: Text('Bạn có chắc chắn muốn xóa nhân viên ${emp.name}?'),
+                                content: Text(
+                                  'Bạn có chắc chắn muốn xóa nhân viên ${emp.name}?',
+                                ),
                                 actions: [
                                   TextButton(
                                     onPressed: () => Navigator.pop(context),
@@ -356,7 +429,10 @@ class _StaffScreenState extends State<StaffScreen> {
                                       appState.deleteEmployee(emp.id);
                                       Navigator.pop(context);
                                     },
-                                    child: const Text('Xóa', style: TextStyle(color: Colors.red)),
+                                    child: const Text(
+                                      'Xóa',
+                                      style: TextStyle(color: Colors.red),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -397,18 +473,16 @@ class _StaffScreenState extends State<StaffScreen> {
         const SizedBox(height: 4),
         const Text(
           'Kéo chuột hoặc vuốt ngang để xem thêm: Vai trò, Trạng thái, Hành động',
-          style: TextStyle(color: Colors.grey, fontSize: 12, fontStyle: FontStyle.italic),
+          style: TextStyle(
+            color: Colors.grey,
+            fontSize: 12,
+            fontStyle: FontStyle.italic,
+          ),
         ),
         const SizedBox(height: 16),
         isScrollable
-            ? Expanded(
-                child: Card(
-                  child: cardContent,
-                ),
-              )
-            : Card(
-                child: cardContent,
-              ),
+            ? Expanded(child: Card(child: cardContent))
+            : Card(child: cardContent),
       ],
     );
   }
@@ -439,7 +513,11 @@ class _StaffScreenState extends State<StaffScreen> {
                     Expanded(
                       flex: 6,
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 24, bottom: 24, right: 24),
+                        padding: const EdgeInsets.only(
+                          top: 24,
+                          bottom: 24,
+                          right: 24,
+                        ),
                         child: _buildListSection(employees, isScrollable: true),
                       ),
                     ),

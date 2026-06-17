@@ -4,10 +4,7 @@ class OrderItem {
   final Drink drink;
   final int quantity;
 
-  OrderItem({
-    required this.drink,
-    required this.quantity,
-  });
+  OrderItem({required this.drink, required this.quantity});
 
   int get cost => drink.cost * quantity;
 }

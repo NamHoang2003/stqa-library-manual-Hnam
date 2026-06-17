@@ -32,24 +32,41 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
         // Always add Menu/Order tab
         screens.add(const MenuScreen(cost: 0));
-        tabItems.add({'title': 'Menu & Tạo Đơn', 'icon': Icons.local_cafe_outlined});
+        tabItems.add({
+          'title': 'Menu & Tạo Đơn',
+          'icon': Icons.local_cafe_outlined,
+        });
 
         if (isManager) {
           screens.add(const InventoryScreen());
-          tabItems.add({'title': 'Kho Nguyên Liệu', 'icon': Icons.inventory_2_outlined});
+          tabItems.add({
+            'title': 'Kho Nguyên Liệu',
+            'icon': Icons.inventory_2_outlined,
+          });
 
           screens.add(const StaffScreen());
-          tabItems.add({'title': 'Quản Lý Nhân Viên', 'icon': Icons.people_outline});
+          tabItems.add({
+            'title': 'Quản Lý Nhân Viên',
+            'icon': Icons.people_outline,
+          });
 
           screens.add(const ReportScreen());
-          tabItems.add({'title': 'Báo Cáo Doanh Thu', 'icon': Icons.bar_chart_outlined});
+          tabItems.add({
+            'title': 'Báo Cáo Doanh Thu',
+            'icon': Icons.bar_chart_outlined,
+          });
         } else {
           // Staff see: Orders history
           screens.add(const OrderCartPanel(isHistoryOnly: true));
-          tabItems.add({'title': 'Lịch Sử Đơn Hàng', 'icon': Icons.receipt_long_outlined});
+          tabItems.add({
+            'title': 'Lịch Sử Đơn Hàng',
+            'icon': Icons.receipt_long_outlined,
+          });
         }
 
-        final currentIndex = appState.activeTabIndex >= screens.length ? 0 : appState.activeTabIndex;
+        final currentIndex = appState.activeTabIndex >= screens.length
+            ? 0
+            : appState.activeTabIndex;
 
         // Body content
         final bodyContent = IndexedStack(
@@ -66,7 +83,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 const SizedBox(width: 10),
                 Text(
                   isDesktop ? 'Hệ thống Cà Phê ABC' : 'ABC Coffee',
-                  style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
                 ),
               ],
             ),
@@ -83,21 +104,33 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       context: context,
                       builder: (context) => AlertDialog(
                         title: const Text('Khôi phục dữ liệu?'),
-                        content: const Text('Tất cả đơn hàng và nhân viên tự thêm sẽ bị xóa, kho nguyên liệu được nạp lại về ban đầu.'),
+                        content: const Text(
+                          'Tất cả đơn hàng và nhân viên tự thêm sẽ bị xóa, kho nguyên liệu được nạp lại về ban đầu.',
+                        ),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.pop(context),
-                            child: const Text('Hủy', style: TextStyle(color: Color(0xFF5D4037))),
+                            child: const Text(
+                              'Hủy',
+                              style: TextStyle(color: Color(0xFF5D4037)),
+                            ),
                           ),
                           TextButton(
                             onPressed: () {
                               appState.restoreData();
                               Navigator.pop(context);
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('Đã khôi phục dữ liệu về seed data thành công!')),
+                                const SnackBar(
+                                  content: Text(
+                                    'Đã khôi phục dữ liệu về seed data thành công!',
+                                  ),
+                                ),
                               );
                             },
-                            child: const Text('Khôi phục', style: TextStyle(color: Colors.red)),
+                            child: const Text(
+                              'Khôi phục',
+                              style: TextStyle(color: Colors.red),
+                            ),
                           ),
                         ],
                       ),
@@ -112,22 +145,31 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       padding: EdgeInsets.zero,
                       label: Text(
                         '${user?.name} (${user?.role == 'Manager' ? 'Quản lý' : 'Nhân viên'})',
-                        style: const TextStyle(color: Color(0xFFEFE6DD), fontSize: 12, fontWeight: FontWeight.w600),
+                        style: const TextStyle(
+                          color: Color(0xFFEFE6DD),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                       avatar: Icon(
-                        user?.role == 'Manager' ? Icons.admin_panel_settings : Icons.person,
+                        user?.role == 'Manager'
+                            ? Icons.admin_panel_settings
+                            : Icons.person,
                         color: const Color(0xFFD2B48C),
                         size: 16,
                       ),
                       side: BorderSide.none,
                     )
                   : Tooltip(
-                      message: '${user?.name} (${user?.role == 'Manager' ? 'Quản lý' : 'Nhân viên'})',
+                      message:
+                          '${user?.name} (${user?.role == 'Manager' ? 'Quản lý' : 'Nhân viên'})',
                       child: CircleAvatar(
                         backgroundColor: const Color(0xFF5D4037),
                         radius: 16,
                         child: Icon(
-                          user?.role == 'Manager' ? Icons.admin_panel_settings : Icons.person,
+                          user?.role == 'Manager'
+                              ? Icons.admin_panel_settings
+                              : Icons.person,
                           color: const Color(0xFFD2B48C),
                           size: 16,
                         ),
@@ -156,7 +198,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       decoration: const BoxDecoration(
                         color: Color(0xFFFAF5EF),
                         border: Border(
-                          right: BorderSide(color: Color(0xFFEFE6DD), width: 1.5),
+                          right: BorderSide(
+                            color: Color(0xFFEFE6DD),
+                            width: 1.5,
+                          ),
                         ),
                       ),
                       child: Column(
@@ -172,20 +217,32 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             ),
                             child: Row(
                               children: const [
-                                Icon(Icons.storefront, color: Color(0xFFD2B48C), size: 30),
+                                Icon(
+                                  Icons.storefront,
+                                  color: Color(0xFFD2B48C),
+                                  size: 30,
+                                ),
                                 SizedBox(width: 12),
                                 Expanded(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         'Cửa Hàng ABC',
-                                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14,
+                                        ),
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                       Text(
                                         'Đang hoạt động',
-                                        style: TextStyle(color: Color(0xFFD7CCC8), fontSize: 11),
+                                        style: TextStyle(
+                                          color: Color(0xFFD7CCC8),
+                                          fontSize: 11,
+                                        ),
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                     ],
@@ -202,21 +259,32 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 final item = tabItems[idx];
                                 final isSelected = currentIndex == idx;
                                 return Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 12,
+                                    vertical: 4,
+                                  ),
                                   child: Material(
-                                    color: isSelected ? const Color(0xFF5D4037) : Colors.transparent,
+                                    color: isSelected
+                                        ? const Color(0xFF5D4037)
+                                        : Colors.transparent,
                                     borderRadius: BorderRadius.circular(12),
                                     clipBehavior: Clip.antiAlias,
                                     child: ListTile(
                                       leading: Icon(
                                         item['icon'] as IconData,
-                                        color: isSelected ? Colors.white : const Color(0xFF8D6E63),
+                                        color: isSelected
+                                            ? Colors.white
+                                            : const Color(0xFF8D6E63),
                                       ),
                                       title: Text(
                                         item['title'] as String,
                                         style: TextStyle(
-                                          color: isSelected ? Colors.white : const Color(0xFF3E2723),
-                                          fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+                                          color: isSelected
+                                              ? Colors.white
+                                              : const Color(0xFF3E2723),
+                                          fontWeight: isSelected
+                                              ? FontWeight.bold
+                                              : FontWeight.w500,
                                           fontSize: 14,
                                         ),
                                       ),
@@ -234,16 +302,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             padding: const EdgeInsets.all(16.0),
                             child: Text(
                               'Phiên bản 1.0.0 (In-Memory)',
-                              style: TextStyle(color: Colors.grey.shade500, fontSize: 11),
+                              style: TextStyle(
+                                color: Colors.grey.shade500,
+                                fontSize: 11,
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ),
                     // Main Panel
-                    Expanded(
-                      child: bodyContent,
-                    ),
+                    Expanded(child: bodyContent),
                   ],
                 )
               : bodyContent,

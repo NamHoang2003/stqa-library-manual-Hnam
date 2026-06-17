@@ -23,7 +23,7 @@ class AppStateProvider extends ChangeNotifier {
     Employee(
       id: 'EMP001',
       name: 'Nguyễn Văn Quản',
-      email: 'manager@abc.com',
+      email: 'manager@coffee.com',
       phone: '0901234567',
       role: 'Manager',
       status: 'Đang làm',
@@ -31,7 +31,7 @@ class AppStateProvider extends ChangeNotifier {
     Employee(
       id: 'EMP002',
       name: 'Trần Thị Phục Vụ',
-      email: 'staff1@abc.com',
+      email: 'staff1@coffee.com',
       phone: '0907654321',
       role: 'Staff',
       status: 'Đang làm',
@@ -39,7 +39,7 @@ class AppStateProvider extends ChangeNotifier {
     Employee(
       id: 'EMP003',
       name: 'Lê Văn Pha Chế',
-      email: 'staff2@abc.com',
+      email: 'staff2@coffee.com',
       phone: '0908889999',
       role: 'Staff',
       status: 'Đang làm',
@@ -47,15 +47,15 @@ class AppStateProvider extends ChangeNotifier {
     Employee(
       id: 'EMP004',
       name: 'Phạm Tạm Ngưng',
-      email: 'staff3@abc.com',
+      email: 'staff3@coffee.com',
       phone: '0904445555',
       role: 'Staff',
       status: 'Nghỉ việc',
     ),
     Employee(
       id: 'EMP005',
-      name: 'Manager Coffee',
-      email: 'manager@coffee.com',
+      name: 'Manager Coffee 2',
+      email: 'manager2@coffee.com',
       phone: '0901112222',
       role: 'Manager',
       status: 'Đang làm',
@@ -70,8 +70,8 @@ class AppStateProvider extends ChangeNotifier {
     ),
     Employee(
       id: 'EMP007',
-      name: 'Librarian',
-      email: 'librarian@library.com',
+      name: 'Manager Coffee 3',
+      email: 'manager3@coffee.com',
       phone: '0905556666',
       role: 'Manager',
       status: 'Đang làm',
@@ -79,7 +79,7 @@ class AppStateProvider extends ChangeNotifier {
     Employee(
       id: 'EMP008',
       name: 'Bá Nguyễn',
-      email: 'ba.nguyen@email.com',
+      email: 'ba.nguyen@coffee.com',
       phone: '0907778888',
       role: 'Staff',
       status: 'Đang làm',
@@ -104,18 +104,132 @@ class AppStateProvider extends ChangeNotifier {
 
   // Drinks list (pre-seeded)
   final List<Drink> _drinks = [
-    Drink('Cà phê đen', 20000, 'Còn đồ', 'VND', type: 'Cà phê', recipe: {'Cà phê bột': 15.0, 'Đường': 10.0, 'Ly giấy': 1.0}),
-    Drink('Cà phê sữa', 25000, 'Còn đồ', 'VND', type: 'Cà phê', recipe: {'Cà phê bột': 15.0, 'Sữa đặc': 25.0, 'Ly giấy': 1.0}),
-    Drink('Bạc xỉu', 29000, 'Còn đồ', 'VND', type: 'Cà phê', recipe: {'Cà phê bột': 10.0, 'Sữa tươi': 100.0, 'Sữa đặc': 20.0, 'Ly giấy': 1.0}),
-    Drink('Trà Đào Cam Sả', 35000, 'Còn đồ', 'VND', type: 'Trà', recipe: {'Trà túi lọc': 1.0, 'Đào ngâm': 2.0, 'Đường': 20.0, 'Ly giấy': 1.0}),
-    Drink('Trà đào xả tắc', 35000, 'Còn đồ', 'VND', type: 'Trà', recipe: {'Trà túi lọc': 1.0, 'Đào ngâm': 2.0, 'Đường': 20.0, 'Ly giấy': 1.0}),
-    Drink('Trà Sữa Việt Quất', 32000, 'Còn đồ', 'VND', type: 'Trà sữa', recipe: {'Trà túi lọc': 1.0, 'Sữa tươi': 100.0, 'Việt quất mứt': 30.0, 'Ly giấy': 1.0}),
-    Drink('Trà Sữa Bạc Hà', 30000, 'Còn đồ', 'VND', type: 'Trà sữa', recipe: {'Trà túi lọc': 1.0, 'Sữa tươi': 100.0, 'Siro bạc hà': 20.0, 'Ly giấy': 1.0}),
-    Drink('Caramel Vị Muối Biển', 45000, 'Còn đồ', 'VND', type: 'Đá xay', recipe: {'Sữa tươi': 150.0, 'Đường': 15.0, 'Ly giấy': 1.0}),
-    Drink('Trà Sữa Chuối Nướng', 40000, 'Còn đồ', 'VND', type: 'Trà sữa', recipe: {'Trà túi lọc': 1.0, 'Sữa tươi': 100.0, 'Ly giấy': 1.0}),
-    Drink('Trà Sữa Matcha', 35000, 'Còn đồ', 'VND', type: 'Trà sữa', recipe: {'Trà túi lọc': 1.0, 'Sữa tươi': 100.0, 'Bột matcha': 5.0, 'Ly giấy': 1.0}),
-    Drink('Sinh tố Bơ', 45000, 'Còn đồ', 'VND', type: 'Sinh tố', recipe: {'Sữa tươi': 100.0, 'Sữa đặc': 30.0, 'Ly giấy': 1.0}),
-    Drink('Sinh tố Xoài', 45000, 'Còn đồ', 'VND', type: 'Sinh tố', recipe: {'Sữa tươi': 100.0, 'Sữa đặc': 30.0, 'Ly giấy': 1.0}),
+    Drink(
+      'Cà phê đen',
+      20000,
+      'Còn đồ',
+      'VND',
+      type: 'Cà phê',
+      recipe: {'Cà phê bột': 15.0, 'Đường': 10.0, 'Ly giấy': 1.0},
+    ),
+    Drink(
+      'Cà phê sữa',
+      25000,
+      'Còn đồ',
+      'VND',
+      type: 'Cà phê',
+      recipe: {'Cà phê bột': 15.0, 'Sữa đặc': 25.0, 'Ly giấy': 1.0},
+    ),
+    Drink(
+      'Bạc xỉu',
+      29000,
+      'Còn đồ',
+      'VND',
+      type: 'Cà phê',
+      recipe: {
+        'Cà phê bột': 10.0,
+        'Sữa tươi': 100.0,
+        'Sữa đặc': 20.0,
+        'Ly giấy': 1.0,
+      },
+    ),
+    Drink(
+      'Trà Đào Cam Sả',
+      35000,
+      'Còn đồ',
+      'VND',
+      type: 'Trà',
+      recipe: {
+        'Trà túi lọc': 1.0,
+        'Đào ngâm': 2.0,
+        'Đường': 20.0,
+        'Ly giấy': 1.0,
+      },
+    ),
+    Drink(
+      'Trà đào xả tắc',
+      35000,
+      'Còn đồ',
+      'VND',
+      type: 'Trà',
+      recipe: {
+        'Trà túi lọc': 1.0,
+        'Đào ngâm': 2.0,
+        'Đường': 20.0,
+        'Ly giấy': 1.0,
+      },
+    ),
+    Drink(
+      'Trà Sữa Việt Quất',
+      32000,
+      'Còn đồ',
+      'VND',
+      type: 'Trà sữa',
+      recipe: {
+        'Trà túi lọc': 1.0,
+        'Sữa tươi': 100.0,
+        'Việt quất mứt': 30.0,
+        'Ly giấy': 1.0,
+      },
+    ),
+    Drink(
+      'Trà Sữa Bạc Hà',
+      30000,
+      'Còn đồ',
+      'VND',
+      type: 'Trà sữa',
+      recipe: {
+        'Trà túi lọc': 1.0,
+        'Sữa tươi': 100.0,
+        'Siro bạc hà': 20.0,
+        'Ly giấy': 1.0,
+      },
+    ),
+    Drink(
+      'Caramel Vị Muối Biển',
+      45000,
+      'Còn đồ',
+      'VND',
+      type: 'Đá xay',
+      recipe: {'Sữa tươi': 150.0, 'Đường': 15.0, 'Ly giấy': 1.0},
+    ),
+    Drink(
+      'Trà Sữa Chuối Nướng',
+      40000,
+      'Còn đồ',
+      'VND',
+      type: 'Trà sữa',
+      recipe: {'Trà túi lọc': 1.0, 'Sữa tươi': 100.0, 'Ly giấy': 1.0},
+    ),
+    Drink(
+      'Trà Sữa Matcha',
+      35000,
+      'Còn đồ',
+      'VND',
+      type: 'Trà sữa',
+      recipe: {
+        'Trà túi lọc': 1.0,
+        'Sữa tươi': 100.0,
+        'Bột matcha': 5.0,
+        'Ly giấy': 1.0,
+      },
+    ),
+    Drink(
+      'Sinh tố Bơ',
+      45000,
+      'Còn đồ',
+      'VND',
+      type: 'Sinh tố',
+      recipe: {'Sữa tươi': 100.0, 'Sữa đặc': 30.0, 'Ly giấy': 1.0},
+    ),
+    Drink(
+      'Sinh tố Xoài',
+      45000,
+      'Còn đồ',
+      'VND',
+      type: 'Sinh tố',
+      recipe: {'Sữa tươi': 100.0, 'Sữa đặc': 30.0, 'Ly giấy': 1.0},
+    ),
   ];
   List<Drink> get drinks => List.unmodifiable(_drinks);
 
@@ -137,14 +251,70 @@ class AppStateProvider extends ChangeNotifier {
     // Reset Employees
     _employees.clear();
     _employees.addAll([
-      Employee(id: 'EMP001', name: 'Nguyễn Văn Quản', email: 'manager@abc.com', phone: '0901234567', role: 'Manager', status: 'Đang làm'),
-      Employee(id: 'EMP002', name: 'Trần Thị Phục Vụ', email: 'staff1@abc.com', phone: '0907654321', role: 'Staff', status: 'Đang làm'),
-      Employee(id: 'EMP003', name: 'Lê Văn Pha Chế', email: 'staff2@abc.com', phone: '0908889999', role: 'Staff', status: 'Đang làm'),
-      Employee(id: 'EMP004', name: 'Phạm Tạm Ngưng', email: 'staff3@abc.com', phone: '0904445555', role: 'Staff', status: 'Nghỉ việc'),
-      Employee(id: 'EMP005', name: 'Manager Coffee', email: 'manager@coffee.com', phone: '0901112222', role: 'Manager', status: 'Đang làm'),
-      Employee(id: 'EMP006', name: 'Staff Coffee', email: 'staff@coffee.com', phone: '0903334444', role: 'Staff', status: 'Đang làm'),
-      Employee(id: 'EMP007', name: 'Librarian', email: 'librarian@library.com', phone: '0905556666', role: 'Manager', status: 'Đang làm'),
-      Employee(id: 'EMP008', name: 'Bá Nguyễn', email: 'ba.nguyen@email.com', phone: '0907778888', role: 'Staff', status: 'Đang làm'),
+      Employee(
+        id: 'EMP001',
+        name: 'Nguyễn Văn Quản',
+        email: 'manager@abc.com',
+        phone: '0901234567',
+        role: 'Manager',
+        status: 'Đang làm',
+      ),
+      Employee(
+        id: 'EMP002',
+        name: 'Trần Thị Phục Vụ',
+        email: 'staff1@abc.com',
+        phone: '0907654321',
+        role: 'Staff',
+        status: 'Đang làm',
+      ),
+      Employee(
+        id: 'EMP003',
+        name: 'Lê Văn Pha Chế',
+        email: 'staff2@abc.com',
+        phone: '0908889999',
+        role: 'Staff',
+        status: 'Đang làm',
+      ),
+      Employee(
+        id: 'EMP004',
+        name: 'Phạm Tạm Ngưng',
+        email: 'staff3@abc.com',
+        phone: '0904445555',
+        role: 'Staff',
+        status: 'Nghỉ việc',
+      ),
+      Employee(
+        id: 'EMP005',
+        name: 'Manager Coffee',
+        email: 'manager@coffee.com',
+        phone: '0901112222',
+        role: 'Manager',
+        status: 'Đang làm',
+      ),
+      Employee(
+        id: 'EMP006',
+        name: 'Staff Coffee',
+        email: 'staff@coffee.com',
+        phone: '0903334444',
+        role: 'Staff',
+        status: 'Đang làm',
+      ),
+      Employee(
+        id: 'EMP007',
+        name: 'Librarian',
+        email: 'librarian@library.com',
+        phone: '0905556666',
+        role: 'Manager',
+        status: 'Đang làm',
+      ),
+      Employee(
+        id: 'EMP008',
+        name: 'Bá Nguyễn',
+        email: 'ba.nguyen@email.com',
+        phone: '0907778888',
+        role: 'Staff',
+        status: 'Đang làm',
+      ),
     ]);
 
     // Reset Ingredients
@@ -168,7 +338,9 @@ class AppStateProvider extends ChangeNotifier {
   // Get current quantity of an ingredient
   double getIngredientQuantity(String name) {
     try {
-      return _ingredients.firstWhere((element) => element.name == name).quantity;
+      return _ingredients
+          .firstWhere((element) => element.name == name)
+          .quantity;
     } catch (_) {
       return 0.0;
     }
@@ -198,30 +370,41 @@ class AppStateProvider extends ChangeNotifier {
   // Employee CRUD operations
   String addEmployee(String name, String email, String phone, String role) {
     // Validate email
-    if (!email.contains('@') || !email.substring(email.indexOf('@')).contains('.')) {
+    if (!email.contains('@') ||
+        !email.substring(email.indexOf('@')).contains('.')) {
       return 'Email không hợp lệ (cần có @ và . ở phần tên miền)';
     }
 
     // Check duplicate
-    final isDuplicate = _employees.any((element) => element.email.toLowerCase() == email.toLowerCase());
+    final isDuplicate = _employees.any(
+      (element) => element.email.toLowerCase() == email.toLowerCase(),
+    );
     if (isDuplicate) {
       return 'Email này đã được sử dụng bởi một nhân viên khác';
     }
 
     final newId = 'EMP${(_employees.length + 1).toString().padLeft(3, '0')}';
-    _employees.add(Employee(
-      id: newId,
-      name: name,
-      email: email,
-      phone: phone,
-      role: role,
-      status: 'Đang làm',
-    ));
+    _employees.add(
+      Employee(
+        id: newId,
+        name: name,
+        email: email,
+        phone: phone,
+        role: role,
+        status: 'Đang làm',
+      ),
+    );
     notifyListeners();
     return 'Success';
   }
 
-  void updateEmployee(String id, String name, String phone, String role, String status) {
+  void updateEmployee(
+    String id,
+    String name,
+    String phone,
+    String role,
+    String status,
+  ) {
     final index = _employees.indexWhere((element) => element.id == id);
     if (index != -1) {
       _employees[index] = _employees[index].copyWith(
@@ -426,7 +609,8 @@ class AppStateProvider extends ChangeNotifier {
     final requiredIngredients = <String, double>{};
     for (var item in orderItems) {
       item.drink.recipe.forEach((ingName, amount) {
-        requiredIngredients[ingName] = (requiredIngredients[ingName] ?? 0.0) + (amount * item.quantity);
+        requiredIngredients[ingName] =
+            (requiredIngredients[ingName] ?? 0.0) + (amount * item.quantity);
       });
     }
 
@@ -451,7 +635,9 @@ class AppStateProvider extends ChangeNotifier {
       discount: disc,
       total: tot,
       paymentMethod: paymentMethod,
-      voucherCode: voucherCode != null && voucherCode.trim().isNotEmpty ? voucherCode.trim().toUpperCase() : null,
+      voucherCode: voucherCode != null && voucherCode.trim().isNotEmpty
+          ? voucherCode.trim().toUpperCase()
+          : null,
       date: DateTime.now(),
       status: status,
       createdById: _currentUser?.id ?? 'SYSTEM',

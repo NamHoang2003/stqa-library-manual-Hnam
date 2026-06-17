@@ -4,7 +4,8 @@ class Drink {
   final String state; // 'Còn' or 'Hết' or 'Còn đồ'
   final String currency;
   final String type; // 'Cà phê', 'Trà sữa', 'Sinh tố', 'Đồ uống lạnh'
-  final Map<String, double> recipe; // e.g. {'Cà phê hạt/bột': 15.0, 'Ly giấy': 1.0}
+  final Map<String, double>
+  recipe; // e.g. {'Cà phê hạt/bột': 15.0, 'Ly giấy': 1.0}
 
   Drink(
     this.name,

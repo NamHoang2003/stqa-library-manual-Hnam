@@ -45,15 +45,22 @@ class MyApp extends StatelessWidget {
             ),
             cardTheme: CardThemeData(
               elevation: 2,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
               color: Colors.white,
             ),
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF5D4037),
                 foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 14,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 elevation: 0,
               ),
             ),
@@ -61,8 +68,13 @@ class MyApp extends StatelessWidget {
               style: OutlinedButton.styleFrom(
                 foregroundColor: const Color(0xFF5D4037),
                 side: const BorderSide(color: Color(0xFF5D4037), width: 1.5),
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 14,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
             ),
             inputDecorationTheme: InputDecorationTheme(
@@ -74,11 +86,20 @@ class MyApp extends StatelessWidget {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFF5D4037), width: 2),
+                borderSide: const BorderSide(
+                  color: Color(0xFF5D4037),
+                  width: 2,
+                ),
               ),
               labelStyle: const TextStyle(color: Color(0xFF8D6E63)),
-              floatingLabelStyle: const TextStyle(color: Color(0xFF5D4037), fontWeight: FontWeight.bold),
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              floatingLabelStyle: const TextStyle(
+                color: Color(0xFF5D4037),
+                fontWeight: FontWeight.bold,
+              ),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 16,
+              ),
             ),
           ),
           home: appState.currentUser == null
